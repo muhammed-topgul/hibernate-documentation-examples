@@ -2,9 +2,11 @@ package com.muhammedtopgul.hibernatedocs;
 
 import com.muhammedtopgul.hibernatedocs.config.HibernateConfig;
 import com.muhammedtopgul.hibernatedocs.entity.Contact;
+import com.muhammedtopgul.hibernatedocs.entity.Person;
 import com.muhammedtopgul.hibernatedocs.entity.Phone;
 import com.muhammedtopgul.hibernatedocs.entity.Product;
 import com.muhammedtopgul.hibernatedocs.entity.embeddable.Name;
+import com.muhammedtopgul.hibernatedocs.enumeration.Gender;
 import com.muhammedtopgul.hibernatedocs.enumeration.PhoneType;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -85,6 +87,30 @@ public class BasicTests {
 
         session.persist(phone);
         transaction.commit();
+
+        session.close();
+    }
+
+    @Test
+    public void testAttributeConverter() {
+        Session session = getSession();
+        Transaction transaction = session.beginTransaction();
+
+        Name name = new Name();
+        name.setFirst("Muhammed");
+        name.setLast("Topgul");
+
+        Person person = new Person();
+        person.setId(1);
+        person.setName(name);
+        person.setGender(Gender.MALE);
+
+        session.persist(person);
+        transaction.commit();
+
+        person = session.get(Person.class, 1);
+
+        assertEquals(person.getGender(), Gender.MALE);
 
         session.close();
     }

@@ -12,5 +12,6 @@
         <mapping class="com.muhammedtopgul.hibernatedocs.entity.Contact"/>
         <mapping class="com.muhammedtopgul.hibernatedocs.entity.Product"/>
         <mapping class="com.muhammedtopgul.hibernatedocs.entity.Phone"/>
+        <mapping class="com.muhammedtopgul.hibernatedocs.entity.Person"/>
     </session-factory>
 </hibernate-configuration>
