@@ -1,5 +1,6 @@
 package com.muhammedtopgul.hibernatedocs.config;
 
+import com.muhammedtopgul.hibernatedocs.converter.basicType.BitSetType;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
@@ -17,6 +18,12 @@ public class HibernateConfig {
 
     static {
         Configuration configuration = new Configuration().configure("hibernate.cfg.xml");
+
+        // for basic type conversion
+        configuration.registerTypeContributor((typeContributions, serviceRegistry) -> {
+            typeContributions.contributeType(BitSetType.INSTANCE);
+        });
+
         sessionFactory = configuration.buildSessionFactory();
     }
 

@@ -2,6 +2,7 @@ package com.muhammedtopgul.hibernatedocs;
 
 import com.muhammedtopgul.hibernatedocs.config.HibernateConfig;
 import com.muhammedtopgul.hibernatedocs.entity.Contact;
+import com.muhammedtopgul.hibernatedocs.entity.Product;
 import com.muhammedtopgul.hibernatedocs.entity.embeddable.Name;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -9,8 +10,10 @@ import org.junit.Test;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.BitSet;
 
 import static com.muhammedtopgul.hibernatedocs.util.HibernateUtil.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * created by Muhammed Topgul on 13/09/2021 at 09:12
@@ -48,4 +51,25 @@ public class BasicTests {
         transaction.commit();
         session.close();
     }
+
+    @Test
+    public void testBasicTypeConversion() {
+        BitSet bitSet = BitSet.valueOf( new long[] {1, 2, 3} );
+
+        Session session = getSession();
+        Transaction transaction = getTransaction(session);
+
+        Product product = new Product();
+        product.setId(1);
+        product.setBitSet(bitSet);
+
+        session.persist(product);
+        transaction.commit();
+
+        // read
+        product = session.get(Product.class, 1);
+        assertEquals(bitSet, product.getBitSet());
+    }
+
+
 }
