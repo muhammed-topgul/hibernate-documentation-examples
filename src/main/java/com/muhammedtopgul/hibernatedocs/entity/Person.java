@@ -1,11 +1,13 @@
 package com.muhammedtopgul.hibernatedocs.entity;
 
 import com.muhammedtopgul.hibernatedocs.converter.attributeConverter.GenderConverter;
+import com.muhammedtopgul.hibernatedocs.converter.basicType.GenderType;
 import com.muhammedtopgul.hibernatedocs.entity.embeddable.Name;
 import com.muhammedtopgul.hibernatedocs.enumeration.Gender;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.Convert;
 import javax.persistence.Entity;
@@ -26,6 +28,7 @@ public class Person {
 
     private Name name;
 
-    @Convert(converter = GenderConverter.class)
+    // @Convert(converter = GenderConverter.class)
+    @Type(type = "genderType")
     public Gender gender;
 }
