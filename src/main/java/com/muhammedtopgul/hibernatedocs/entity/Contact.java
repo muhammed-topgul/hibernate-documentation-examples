@@ -3,6 +3,7 @@ package com.muhammedtopgul.hibernatedocs.entity;
 import com.muhammedtopgul.hibernatedocs.entity.embeddable.Name;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.net.URL;
@@ -26,6 +27,9 @@ public class Contact {
 
     private URL website;
 
-    @Column( name = "RATING" )
+    @Column(name = "RATING")
     private boolean starred;
+
+    @Type(type="yes_no") // will keep Y or N instead of true or false in database
+    private boolean isActive;
 }
