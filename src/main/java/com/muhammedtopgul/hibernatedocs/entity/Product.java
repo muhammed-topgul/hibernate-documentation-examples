@@ -15,11 +15,11 @@ import java.util.BitSet;
  */
 
 @Entity(name = "Product")
-@TypeDef(
-        name = "bitset",
-        defaultForType = BitSet.class,
-        typeClass = BitSetType.class
-)
+//@TypeDef(
+//        name = "bitset",
+//        defaultForType = BitSet.class,
+//        typeClass = BitSetType.class
+//)
 @Getter
 @Setter
 public class Product {
