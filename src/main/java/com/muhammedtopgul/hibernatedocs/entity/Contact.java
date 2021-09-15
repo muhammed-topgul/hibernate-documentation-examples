@@ -4,8 +4,7 @@ import com.muhammedtopgul.hibernatedocs.entity.embeddable.Name;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.net.URL;
 
 /**
@@ -22,9 +21,11 @@ public class Contact {
 
     private Name name;
 
+    @Basic(optional = false, fetch = FetchType.EAGER)
     private String notes;
 
     private URL website;
 
+    @Column( name = "RATING" )
     private boolean starred;
 }
