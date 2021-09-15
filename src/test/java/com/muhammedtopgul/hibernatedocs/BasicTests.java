@@ -2,8 +2,10 @@ package com.muhammedtopgul.hibernatedocs;
 
 import com.muhammedtopgul.hibernatedocs.config.HibernateConfig;
 import com.muhammedtopgul.hibernatedocs.entity.Contact;
+import com.muhammedtopgul.hibernatedocs.entity.Phone;
 import com.muhammedtopgul.hibernatedocs.entity.Product;
 import com.muhammedtopgul.hibernatedocs.entity.embeddable.Name;
+import com.muhammedtopgul.hibernatedocs.enumeration.PhoneType;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.junit.Test;
@@ -54,7 +56,7 @@ public class BasicTests {
 
     @Test
     public void testBasicTypeConversion() {
-        BitSet bitSet = BitSet.valueOf( new long[] {1, 2, 3} );
+        BitSet bitSet = BitSet.valueOf(new long[]{1, 2, 3});
 
         Session session = getSession();
         Transaction transaction = getTransaction(session);
@@ -71,5 +73,19 @@ public class BasicTests {
         assertEquals(bitSet, product.getBitSet());
     }
 
+    @Test
+    public void testEnumeratedColumn() {
+        Session session = getSession();
+        Transaction transaction = getTransaction(session);
 
+        Phone phone = new Phone();
+        phone.setId(1L);
+        phone.setNumber("123-456-78990");
+        phone.setType(PhoneType.MOBILE);
+
+        session.persist(phone);
+        transaction.commit();
+
+        session.close();
+    }
 }
