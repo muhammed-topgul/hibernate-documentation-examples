@@ -11,7 +11,6 @@ import org.junit.Test;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.BitSet;
 import java.util.Date;
 
@@ -80,7 +79,7 @@ public class BasicTests {
         Transaction transaction = getTransaction(session);
 
         Phone phone = new Phone();
-        phone.setId(1L);
+        phone.setId(1);
         phone.setNumber("123-456-78990");
         phone.setType(PhoneType.MOBILE);
 
@@ -137,5 +136,20 @@ public class BasicTests {
         dateEvent.setTimestamp(new Date());
 
         persist(dateEvent);
+    }
+
+    @Test
+    public void testAutoGenerateFullName() {
+        Name name = new Name();
+        name.setFirst("Muhammed");
+        name.setMiddle(".Jr");
+        name.setLast("Topgul");
+
+        Person person = new Person();
+        person.setId(1);
+        person.setGender(Gender.MALE);
+        person.setName(name);
+
+        persist(person);
     }
 }

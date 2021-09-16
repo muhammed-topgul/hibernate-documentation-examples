@@ -1,11 +1,15 @@
 package com.muhammedtopgul.hibernatedocs.entity;
 
+import com.muhammedtopgul.hibernatedocs.entity.base.BaseTimestamp;
 import com.muhammedtopgul.hibernatedocs.entity.embeddable.Name;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.Type;
 
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import java.net.URL;
 
 /**
@@ -15,10 +19,7 @@ import java.net.URL;
 @Entity(name = "Contact")
 @Getter
 @Setter
-public class Contact {
-
-    @Id
-    private Integer id;
+public class Contact extends BaseTimestamp {
 
     private Name name;
 
@@ -30,6 +31,6 @@ public class Contact {
     @Column(name = "RATING")
     private boolean starred;
 
-    @Type(type="yes_no") // will keep Y or N instead of true or false in database
+    @Type(type = "yes_no") // will keep Y or N instead of true or false in database
     private boolean isActive;
 }

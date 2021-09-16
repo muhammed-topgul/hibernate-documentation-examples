@@ -1,5 +1,6 @@
 package com.muhammedtopgul.hibernatedocs.entity;
 
+import com.muhammedtopgul.hibernatedocs.entity.base.BaseTimestamp;
 import com.muhammedtopgul.hibernatedocs.enumeration.PhoneType;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,10 +14,7 @@ import javax.persistence.*;
 @Entity(name = "Phone")
 @Getter
 @Setter
-public class Phone {
-
-    @Id
-    private Long id;
+public class Phone extends BaseTimestamp {
 
     @Column(name = "phone_number")
     private String number;

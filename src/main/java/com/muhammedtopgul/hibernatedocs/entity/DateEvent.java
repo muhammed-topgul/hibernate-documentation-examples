@@ -1,10 +1,14 @@
 package com.muhammedtopgul.hibernatedocs.entity;
 
+import com.muhammedtopgul.hibernatedocs.entity.base.BaseTimestamp;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import java.util.Date;
 
 /**
@@ -15,11 +19,7 @@ import java.util.Date;
 @Getter
 @Setter
 @ToString
-public class DateEvent {
-
-    @Id
-    @GeneratedValue
-    private Integer id;
+public class DateEvent extends BaseTimestamp {
 
     @Column(name = "`timestamp`")
     @Temporal(TemporalType.DATE)
