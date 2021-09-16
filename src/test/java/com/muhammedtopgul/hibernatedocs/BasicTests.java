@@ -7,6 +7,7 @@ import com.muhammedtopgul.hibernatedocs.enumeration.AccountType;
 import com.muhammedtopgul.hibernatedocs.enumeration.Gender;
 import com.muhammedtopgul.hibernatedocs.enumeration.PhoneType;
 import com.muhammedtopgul.hibernatedocs.user.CurrentUser;
+import org.hibernate.Filter;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.junit.Before;
@@ -16,6 +17,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.BitSet;
 import java.util.Date;
+import java.util.List;
 
 import static com.muhammedtopgul.hibernatedocs.util.HibernateUtil.*;
 import static org.junit.Assert.assertEquals;
@@ -199,6 +201,48 @@ public class BasicTests {
         client = (Client) get(client, 1);
         assertEquals(1, client.getCreditAccounts().size());
         assertEquals(1, client.getDebitAccounts().size());
+    }
+
+    @Test
+    public void testFilter() {
+        Client client = new Client();
+        client.setId(1);
+        client.setName("Muhammed Topgul");
+        persist(client);
+
+        Account account001 = new Account();
+        account001.setId(1);
+        account001.setActive(true);
+        account001.setAmount(1000.0);
+        account001.setRate(0.9);
+        account001.setCredit(12.00);
+        account001.setType(AccountType.CREDIT);
+        account001.setClient(client);
+        persist(account001);
+
+        Account account002 = new Account();
+        account002.setId(2);
+        account002.setActive(false);
+        account002.setAmount(2000.0);
+        account002.setRate(0.15);
+        account002.setCredit(9.0);
+        account002.setType(AccountType.DEBIT);
+        account002.setClient(client);
+
+        persist(account002);
+
+        Session session = getSession();
+
+        // activate filter
+        session.unwrap(Session.class);
+        Filter filter = session.enableFilter("activeAccount");
+        filter.setParameter("active", true);
+
+        List<Account> accounts = session
+                .createQuery("select a from Account a", Account.class)
+                .getResultList();
+
+        assertEquals(1, accounts.size());
     }
 
     @Before

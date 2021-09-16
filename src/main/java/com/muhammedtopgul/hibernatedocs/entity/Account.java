@@ -6,17 +6,28 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.hibernate.annotations.Formula;
-import org.hibernate.annotations.Where;
+import org.hibernate.annotations.*;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
 
 /**
  * created by Muhammed Topgul on 16/09/2021 at 12:39
  */
 
+@FilterDef(
+        name = "activeAccount",
+        parameters = @ParamDef(
+                name = "active",
+                type = "boolean"
+        )
+)
+@Filter(
+        name = "activeAccount",
+        condition = "active_status = :active"
+)
 @Entity(name = "Account")
-@Where(clause = "active = true")
+// @Where(clause = "active = true")
 @Getter
 @Setter
 @ToString
@@ -40,5 +51,6 @@ public class Account extends BaseId {
 
     private Double amount;
 
+    @Column(name = "active_status")
     private boolean active;
 }
