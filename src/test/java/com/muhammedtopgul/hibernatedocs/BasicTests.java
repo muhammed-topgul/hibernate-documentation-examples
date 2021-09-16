@@ -1,10 +1,7 @@
 package com.muhammedtopgul.hibernatedocs;
 
 import com.muhammedtopgul.hibernatedocs.config.HibernateConfig;
-import com.muhammedtopgul.hibernatedocs.entity.Contact;
-import com.muhammedtopgul.hibernatedocs.entity.Person;
-import com.muhammedtopgul.hibernatedocs.entity.Phone;
-import com.muhammedtopgul.hibernatedocs.entity.Product;
+import com.muhammedtopgul.hibernatedocs.entity.*;
 import com.muhammedtopgul.hibernatedocs.entity.embeddable.Name;
 import com.muhammedtopgul.hibernatedocs.enumeration.Gender;
 import com.muhammedtopgul.hibernatedocs.enumeration.PhoneType;
@@ -16,6 +13,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.BitSet;
+import java.util.Date;
 
 import static com.muhammedtopgul.hibernatedocs.util.HibernateUtil.*;
 import static org.junit.Assert.assertEquals;
@@ -131,5 +129,13 @@ public class BasicTests {
 
         product = (Product) get(product, 1);
         assertEquals("My product warranty", product.getWarranty());
+    }
+
+    @Test
+    public void testDate() {
+        DateEvent dateEvent = new DateEvent();
+        dateEvent.setTimestamp(new Date());
+
+        persist(dateEvent);
     }
 }
