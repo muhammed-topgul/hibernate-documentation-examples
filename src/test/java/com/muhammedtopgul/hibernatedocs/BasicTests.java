@@ -3,6 +3,7 @@ package com.muhammedtopgul.hibernatedocs;
 import com.muhammedtopgul.hibernatedocs.config.HibernateConfig;
 import com.muhammedtopgul.hibernatedocs.entity.*;
 import com.muhammedtopgul.hibernatedocs.entity.embeddable.Name;
+import com.muhammedtopgul.hibernatedocs.enumeration.AccountType;
 import com.muhammedtopgul.hibernatedocs.enumeration.Gender;
 import com.muhammedtopgul.hibernatedocs.enumeration.PhoneType;
 import com.muhammedtopgul.hibernatedocs.user.CurrentUser;
@@ -163,6 +164,41 @@ public class BasicTests {
 
         account = (Account) get(account, account.getId());
         assertEquals(String.valueOf(account.getCredit() * account.getRate()), account.getInterest().toString());
+    }
+
+    @Test
+    public void testWhereClause() {
+        // write
+        Client client = new Client();
+        client.setId(1);
+        client.setName("Muhammed Topgul");
+        persist(client);
+
+        Account account001 = new Account();
+        account001.setId(1);
+        account001.setActive(true);
+        account001.setAmount(1000.0);
+        account001.setRate(0.9);
+        account001.setCredit(12.00);
+        account001.setType(AccountType.CREDIT);
+        account001.setClient(client);
+        persist(account001);
+
+        Account account002 = new Account();
+        account002.setId(2);
+        account002.setActive(true);
+        account002.setAmount(2000.0);
+        account002.setRate(0.15);
+        account002.setCredit(9.0);
+        account002.setType(AccountType.DEBIT);
+        account002.setClient(client);
+
+        persist(account002);
+
+        // read
+        client = (Client) get(client, 1);
+        assertEquals(1, client.getCreditAccounts().size());
+        assertEquals(1, client.getDebitAccounts().size());
     }
 
     @Before
