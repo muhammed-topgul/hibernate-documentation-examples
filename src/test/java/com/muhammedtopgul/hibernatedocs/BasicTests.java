@@ -251,6 +251,28 @@ public class BasicTests {
         assertEquals(1, client.getAccounts().size());
     }
 
+    @Test
+    public void testSqlDelete() throws InterruptedException {
+        User user = new User();
+        user.setId(1);
+        user.setUsername("muhammed-topgul");
+        user.setActive(true);
+        user.setDeleted(false);
+
+        persist(user);
+
+        Thread.sleep(5000);
+
+        Session session = getSession();
+        Transaction transaction = getTransaction(session);
+        user = session.get(User.class, 1);
+
+        session.remove(user);
+
+        transactionCommit(transaction);
+        session.close();
+    }
+
     @Before
     public void afterAll() {
         CurrentUser.INSTANCE.logOut();

@@ -35,6 +35,8 @@ public class HibernateUtil {
             return getSession().get(Account.class, id);
         } else if (object instanceof Client) {
             return getSession().get(Client.class, id);
+        } else if (object instanceof User) {
+            return getSession().get(User.class, id);
         }
 
         throw new UnsupportedOperationException(object.getClass().getName() + " is not present");
