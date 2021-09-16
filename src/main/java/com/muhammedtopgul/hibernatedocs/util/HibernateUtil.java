@@ -1,10 +1,7 @@
 package com.muhammedtopgul.hibernatedocs.util;
 
 import com.muhammedtopgul.hibernatedocs.config.HibernateConfig;
-import com.muhammedtopgul.hibernatedocs.entity.Contact;
-import com.muhammedtopgul.hibernatedocs.entity.Person;
-import com.muhammedtopgul.hibernatedocs.entity.Phone;
-import com.muhammedtopgul.hibernatedocs.entity.Product;
+import com.muhammedtopgul.hibernatedocs.entity.*;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -34,6 +31,8 @@ public class HibernateUtil {
             return getSession().get(Person.class, id);
         } else if (object instanceof Phone) {
             return getSession().get(Phone.class, id);
+        } else if (object instanceof Account) {
+            return getSession().get(Account.class, id);
         }
 
         throw new UnsupportedOperationException(object.getClass().getName() + " is not present");

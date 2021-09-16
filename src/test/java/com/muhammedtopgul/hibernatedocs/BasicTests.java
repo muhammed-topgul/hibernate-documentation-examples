@@ -146,25 +146,23 @@ public class BasicTests {
     }
 
     @Test
-    public void testAutoGenerateFullName() {
-        Name name = new Name();
-        name.setFirst("Muhammed");
-        name.setMiddle(".Jr");
-        name.setLast("Topgul");
-
-        Person person = new Person();
-        person.setId(1);
-        person.setGender(Gender.MALE);
-        person.setName(name);
-
-        persist(person);
-    }
-
-    @Test
     public void testCustomCreationTimestamp() {
         Event event = new Event();
         event.setId(1);
         persist(event);
+    }
+
+    @Test
+    public void testFormula() {
+        Account account = new Account();
+        account.setId(1);
+        account.setCredit(10.4);
+        account.setRate(2.0);
+
+        persist(account);
+
+        account = (Account) get(account, account.getId());
+        assertEquals(String.valueOf(account.getCredit() * account.getRate()), account.getInterest().toString());
     }
 
     @Before
