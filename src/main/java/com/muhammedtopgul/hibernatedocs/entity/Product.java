@@ -1,13 +1,13 @@
 package com.muhammedtopgul.hibernatedocs.entity;
 
-import com.muhammedtopgul.hibernatedocs.converter.basicType.BitSetType;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.annotations.Type;
-import org.hibernate.annotations.TypeDef;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import java.util.BitSet;
 
 /**
@@ -22,11 +22,20 @@ import java.util.BitSet;
 //)
 @Getter
 @Setter
+@ToString
 public class Product {
 
     @Id
     private Integer id;
 
+    private String name;
+
     @Type(type = "bitset")
     private BitSet bitSet;
+
+    @Lob
+    private String warranty;
+
+    @Lob
+    private byte[] image;
 }

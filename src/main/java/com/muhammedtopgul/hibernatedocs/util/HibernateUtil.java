@@ -1,6 +1,10 @@
 package com.muhammedtopgul.hibernatedocs.util;
 
 import com.muhammedtopgul.hibernatedocs.config.HibernateConfig;
+import com.muhammedtopgul.hibernatedocs.entity.Contact;
+import com.muhammedtopgul.hibernatedocs.entity.Person;
+import com.muhammedtopgul.hibernatedocs.entity.Phone;
+import com.muhammedtopgul.hibernatedocs.entity.Product;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -9,6 +13,31 @@ import org.hibernate.Transaction;
  */
 
 public class HibernateUtil {
+
+    public static Object persist(Object object) {
+        Session session = getSession();
+        Transaction transaction = getTransaction(session);
+
+        sessionPersist(session, object);
+        transactionCommit(transaction);
+        sessionClose(session);
+
+        return object;
+    }
+
+    public static Object get(Object object, Integer id) {
+        if (object instanceof Product) {
+            return getSession().get(Product.class, id);
+        } else if (object instanceof Contact) {
+            return getSession().get(Contact.class, id);
+        } else if (object instanceof Person) {
+            return getSession().get(Person.class, id);
+        } else if (object instanceof Phone) {
+            return getSession().get(Phone.class, id);
+        }
+
+        throw new UnsupportedOperationException(object.getClass().getName() + " is not present");
+    }
 
     public static Session getSession() {
         return HibernateConfig.getSessionFactory().openSession();

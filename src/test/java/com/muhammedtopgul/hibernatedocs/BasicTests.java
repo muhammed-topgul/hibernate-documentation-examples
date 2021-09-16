@@ -14,6 +14,7 @@ import org.junit.Test;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.BitSet;
 
 import static com.muhammedtopgul.hibernatedocs.util.HibernateUtil.*;
@@ -113,5 +114,22 @@ public class BasicTests {
         assertEquals(person.getGender(), Gender.MALE);
 
         session.close();
+    }
+
+    @Test
+    public void testClob() {
+        String warranty = "My product warranty";
+
+        Product product = new Product();
+        product.setId(1);
+        product.setName("Mobile phone");
+        product.setWarranty(warranty);
+
+        persist(product);
+
+        product = new Product();
+
+        product = (Product) get(product, 1);
+        assertEquals("My product warranty", product.getWarranty());
     }
 }
