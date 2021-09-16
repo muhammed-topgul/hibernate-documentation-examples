@@ -5,8 +5,10 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.Filter;
 import org.hibernate.annotations.Where;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import java.util.ArrayList;
@@ -33,4 +35,14 @@ public class Client extends BaseId {
     @OneToMany(mappedBy = "client")
     @Setter(value = AccessLevel.NONE)
     private List<Account> creditAccounts = new ArrayList<>();
+
+    @OneToMany(
+            mappedBy = "client",
+            cascade = CascadeType.ALL
+    )
+    @Filter(
+            name="activeAccount",
+            condition="active_status = :active"
+    )
+    private List<Account> accounts = new ArrayList<>( );
 }

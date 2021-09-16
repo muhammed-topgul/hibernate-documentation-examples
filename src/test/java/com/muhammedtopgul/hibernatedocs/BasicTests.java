@@ -238,11 +238,17 @@ public class BasicTests {
         Filter filter = session.enableFilter("activeAccount");
         filter.setParameter("active", true);
 
+        // class level filter
         List<Account> accounts = session
                 .createQuery("select a from Account a", Account.class)
                 .getResultList();
 
         assertEquals(1, accounts.size());
+
+        // field level filter
+        client = session.get(Client.class, 1);
+
+        assertEquals(1, client.getAccounts().size());
     }
 
     @Before
