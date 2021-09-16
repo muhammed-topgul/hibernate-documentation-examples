@@ -2,6 +2,7 @@ package com.muhammedtopgul.hibernatedocs;
 
 import com.muhammedtopgul.hibernatedocs.config.HibernateConfig;
 import com.muhammedtopgul.hibernatedocs.entity.*;
+import com.muhammedtopgul.hibernatedocs.entity.embeddable.GPS;
 import com.muhammedtopgul.hibernatedocs.entity.embeddable.Name;
 import com.muhammedtopgul.hibernatedocs.enumeration.AccountType;
 import com.muhammedtopgul.hibernatedocs.enumeration.Gender;
@@ -305,6 +306,16 @@ public class BasicTests {
         // read
         User muhammed = (User) get(user1, 1);
         assertEquals(Turkey, muhammed.getCountry());
+    }
+
+    @Test
+    public void testTarget() {
+        City ankara = new City();
+        ankara.setId(1);
+        ankara.setName("Ankara");
+        ankara.setCoordinates(new GPS(46.77120, 23.62360));
+
+        persist(ankara);
     }
 
     @Before
