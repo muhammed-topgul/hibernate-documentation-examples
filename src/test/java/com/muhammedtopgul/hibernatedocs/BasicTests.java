@@ -160,6 +160,13 @@ public class BasicTests {
         persist(person);
     }
 
+    @Test
+    public void testCustomCreationTimestamp() {
+        Event event = new Event();
+        event.setId(1);
+        persist(event);
+    }
+
     @Before
     public void afterAll() {
         CurrentUser.INSTANCE.logOut();
