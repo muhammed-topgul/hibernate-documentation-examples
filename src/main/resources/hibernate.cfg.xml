@@ -18,5 +18,6 @@
         <mapping class="com.muhammedtopgul.hibernatedocs.entity.Account"/>
         <mapping class="com.muhammedtopgul.hibernatedocs.entity.Client"/>
         <mapping class="com.muhammedtopgul.hibernatedocs.entity.User"/>
+        <mapping class="com.muhammedtopgul.hibernatedocs.entity.Country"/>
     </session-factory>
 </hibernate-configuration>

@@ -37,9 +37,11 @@ public class HibernateUtil {
             return getSession().get(Client.class, id);
         } else if (object instanceof User) {
             return getSession().get(User.class, id);
+        } else if (object instanceof Country) {
+            return getSession().get(Country.class, id);
         }
 
-        throw new UnsupportedOperationException(object.getClass().getName() + " is not present");
+        throw new UnsupportedOperationException(object.getClass() + " is not present");
     }
 
     public static Session getSession() {

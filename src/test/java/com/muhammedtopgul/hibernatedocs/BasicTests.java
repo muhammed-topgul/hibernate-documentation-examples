@@ -273,6 +273,40 @@ public class BasicTests {
         session.close();
     }
 
+    @Test
+    public void testJoinFormula() {
+        // write
+        Country Turkey = new Country();
+        Turkey.setId(1);
+        Turkey.setName("Turkey");
+        persist(Turkey);
+
+        Country US = new Country();
+        US.setId(2);
+        US.setName("United States");
+        persist(US);
+
+        User user1 = new User();
+        user1.setId(1);
+        user1.setActive(true);
+        user1.setFirstName("Muhammed");
+        user1.setLastName("Topgul");
+        user1.setPhoneNumber("+1-234-5678");
+        persist(user1);
+
+        User user2 = new User();
+        user2.setId(2);
+        user2.setActive(true);
+        user2.setFirstName("Vlad");
+        user2.setLastName("Mihalcea");
+        user2.setPhoneNumber("+40-123-4567");
+        persist(user2);
+
+        // read
+        User muhammed = (User) get(user1, 1);
+        assertEquals(Turkey, muhammed.getCountry());
+    }
+
     @Before
     public void afterAll() {
         CurrentUser.INSTANCE.logOut();
