@@ -5,8 +5,10 @@ import com.muhammedtopgul.hibernatedocs.entity.*;
 import com.muhammedtopgul.hibernatedocs.entity.embeddable.Name;
 import com.muhammedtopgul.hibernatedocs.enumeration.Gender;
 import com.muhammedtopgul.hibernatedocs.enumeration.PhoneType;
+import com.muhammedtopgul.hibernatedocs.user.CurrentUser;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.net.MalformedURLException;
@@ -22,6 +24,11 @@ import static org.junit.Assert.assertEquals;
  */
 
 public class BasicTests {
+
+    @Before
+    public void beforeAll() {
+        CurrentUser.INSTANCE.logIn("Muhammed");
+    }
 
     @Test
     public void testHibernateSetup() {
@@ -151,5 +158,10 @@ public class BasicTests {
         person.setName(name);
 
         persist(person);
+    }
+
+    @Before
+    public void afterAll() {
+        CurrentUser.INSTANCE.logOut();
     }
 }
