@@ -20,5 +20,6 @@
         <mapping class="com.muhammedtopgul.hibernatedocs.entity.User"/>
         <mapping class="com.muhammedtopgul.hibernatedocs.entity.Country"/>
         <mapping class="com.muhammedtopgul.hibernatedocs.entity.City"/>
+        <mapping class="com.muhammedtopgul.hibernatedocs.entity.Book"/>
     </session-factory>
 </hibernate-configuration>
