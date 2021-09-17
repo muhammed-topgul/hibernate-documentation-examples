@@ -399,6 +399,27 @@ public class DomainModelTests {
         assertNotSame(book1, book2);
     }
 
+    @Test
+    public void testSetsWithTransientEntities() {
+        // write
+        Library library = new Library();
+        library.setName("Public Libs");
+        persist(library);
+
+        Book book1 = new Book();
+        book1.setTitle("High-Performance Java Persistence");
+
+        Book book2 = new Book();
+        book2.setTitle("Java Persistence with Hibernate");
+
+        assertNotSame(book1, book2);
+
+        library.addBook(book1);
+        library.addBook(book2);
+
+        assertEquals(2, library.getBooks().size());
+    }
+
     @After
     public void afterAll() {
         CurrentUser.INSTANCE.logOut();
