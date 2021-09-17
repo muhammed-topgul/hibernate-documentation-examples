@@ -379,6 +379,26 @@ public class DomainModelTests {
         assertEquals(2, library.getBooks().size());
     }
 
+    @Test
+    public void testMixedSession() {
+        // write
+        Book book1 = new Book();
+        book1.setAuthor("Muhammed");
+        book1.setTitle("How to Java 17");
+        persist(book1);
+
+        Book book2 = new Book();
+        book2.setAuthor("Muhammed");
+        book2.setTitle("How to Hibernate");
+        persist(book2);
+
+        // read
+        book1 = (Book) get(book1, book1.getId());
+        book2 = (Book) get(book2, book2.getId());
+
+        assertNotSame(book1, book2);
+    }
+
     @After
     public void afterAll() {
         CurrentUser.INSTANCE.logOut();
