@@ -4,6 +4,7 @@ import com.muhammedtopgul.hibernatedocs.config.HibernateConfig;
 import com.muhammedtopgul.hibernatedocs.entity.*;
 import com.muhammedtopgul.hibernatedocs.entity.embeddable.GPS;
 import com.muhammedtopgul.hibernatedocs.entity.embeddable.Name;
+import com.muhammedtopgul.hibernatedocs.entity.embeddable.Publisher;
 import com.muhammedtopgul.hibernatedocs.enumeration.AccountType;
 import com.muhammedtopgul.hibernatedocs.enumeration.Gender;
 import com.muhammedtopgul.hibernatedocs.enumeration.PhoneType;
@@ -277,6 +278,33 @@ public class BasicTests {
         country = new Country();
         country.setName("Turkey");
         persist(country);
+    }
+
+    @Test
+    public void testEmbeddableManyToOne() {
+        Country country = new Country();
+        country.setName("Turkey");
+        persist(country);
+
+        Publisher publisher = new Publisher();
+        publisher.setCountry(country);
+        publisher.setName("Apress");
+
+        Book book = new Book();
+        book.setAuthor("Muhammed");
+        book.setTitle("How to Java 17");
+        book.setPublisher(publisher);
+        persist(book);
+
+        publisher = new Publisher();
+        publisher.setCountry(country);
+        publisher.setName("Deitel&Deitel");
+
+        book = new Book();
+        book.setAuthor("John");
+        book.setTitle("How to Hibernate");
+        book.setPublisher(publisher);
+        persist(book);
     }
 
     @Before
