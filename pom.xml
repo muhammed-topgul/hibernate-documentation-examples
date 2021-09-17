@@ -6,6 +6,7 @@
 
     <groupId>com.muhammedtopgul</groupId>
     <artifactId>hibernate-documentation-examples</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
 
     <developers>
@@ -19,6 +20,10 @@
             </properties>
         </developer>
     </developers>
+
+    <modules>
+        <module>02-domain-model</module>
+    </modules>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>

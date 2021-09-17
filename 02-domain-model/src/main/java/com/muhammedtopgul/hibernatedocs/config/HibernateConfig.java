@@ -1,6 +1,5 @@
 package com.muhammedtopgul.hibernatedocs.config;
 
-import com.muhammedtopgul.hibernatedocs.converter.basicType.BitSetType;
 import com.muhammedtopgul.hibernatedocs.converter.basicType.GenderType;
 import com.muhammedtopgul.hibernatedocs.converter.userType.BitSetUserType;
 import org.hibernate.SessionFactory;

@@ -6,10 +6,12 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.hibernate.annotations.*;
+import org.hibernate.annotations.Filter;
+import org.hibernate.annotations.FilterDef;
+import org.hibernate.annotations.Formula;
+import org.hibernate.annotations.ParamDef;
 
 import javax.persistence.*;
-import javax.persistence.Entity;
 
 /**
  * created by Muhammed Topgul on 16/09/2021 at 12:39
