@@ -14,6 +14,7 @@ import org.hibernate.Transaction;
 import org.junit.Before;
 import org.junit.Test;
 
+import javax.persistence.PersistenceException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.BitSet;
@@ -265,6 +266,17 @@ public class BasicTests {
         ankara.setCoordinates(new GPS(46.77120, 23.62360));
 
         persist(ankara);
+    }
+
+    @Test(expected = PersistenceException.class)
+    public void testNaturalId() {
+        Country country = new Country();
+        country.setName("Turkey");
+        persist(country);
+
+        country = new Country();
+        country.setName("Turkey");
+        persist(country);
     }
 
     @Before

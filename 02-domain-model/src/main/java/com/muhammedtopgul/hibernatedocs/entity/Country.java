@@ -3,6 +3,7 @@ package com.muhammedtopgul.hibernatedocs.entity;
 import com.muhammedtopgul.hibernatedocs.entity.base.BaseId;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.NaturalId;
 
 import javax.persistence.Entity;
 import java.util.Objects;
@@ -16,6 +17,7 @@ import java.util.Objects;
 @Setter
 public class Country extends BaseId {
 
+    @NaturalId
     private String name;
 
     @Override
