@@ -53,14 +53,13 @@ public class BasicTests {
         Name name = new Name();
         name.setFirst("Muhammed");
         name.setLast("Topgul");
-        contact.setId(1);
         contact.setName(name);
         contact.setActive(true);
         contact.setStarred(true);
         contact.setNotes("Contact detail notes");
         contact.setWebsite(new URL("https://github.com/muhammed-topgul"));
 
-        session.persist(contact);
+        persist(contact);
         transaction.commit();
         session.close();
     }
@@ -73,14 +72,13 @@ public class BasicTests {
         Transaction transaction = getTransaction(session);
 
         Product product = new Product();
-        product.setId(1);
         product.setBitSet(bitSet);
 
-        session.persist(product);
+        persist(product);
         transaction.commit();
 
         // read
-        product = session.get(Product.class, 1);
+        product = session.get(Product.class, product.getId());
         assertEquals(bitSet, product.getBitSet());
     }
 
@@ -90,11 +88,10 @@ public class BasicTests {
         Transaction transaction = getTransaction(session);
 
         Phone phone = new Phone();
-        phone.setId(1);
         phone.setNumber("123-456-78990");
         phone.setType(PhoneType.MOBILE);
 
-        session.persist(phone);
+        persist(phone);
         transaction.commit();
 
         session.close();
@@ -110,14 +107,13 @@ public class BasicTests {
         name.setLast("Topgul");
 
         Person person = new Person();
-        person.setId(1);
         person.setName(name);
         person.setGender(Gender.MALE);
 
-        session.persist(person);
+        persist(person);
         transaction.commit();
 
-        person = session.get(Person.class, 1);
+        person = session.get(Person.class, person.getId());
 
         assertEquals(person.getGender(), Gender.MALE);
 
@@ -129,15 +125,12 @@ public class BasicTests {
         String warranty = "My product warranty";
 
         Product product = new Product();
-        product.setId(1);
         product.setName("Mobile phone");
         product.setWarranty(warranty);
 
         persist(product);
 
-        product = new Product();
-
-        product = (Product) get(product, 1);
+        product = (Product) get(product, product.getId());
         assertEquals("My product warranty", product.getWarranty());
     }
 
@@ -152,14 +145,12 @@ public class BasicTests {
     @Test
     public void testCustomCreationTimestamp() {
         Event event = new Event();
-        event.setId(1);
         persist(event);
     }
 
     @Test
     public void testFormula() {
         Account account = new Account();
-        account.setId(1);
         account.setCredit(10.4);
         account.setRate(2.0);
 
@@ -173,12 +164,10 @@ public class BasicTests {
     public void testWhereClause() {
         // write
         Client client = new Client();
-        client.setId(1);
         client.setName("Muhammed Topgul");
         persist(client);
 
         Account account001 = new Account();
-        account001.setId(1);
         account001.setActive(true);
         account001.setAmount(1000.0);
         account001.setRate(0.9);
@@ -188,7 +177,6 @@ public class BasicTests {
         persist(account001);
 
         Account account002 = new Account();
-        account002.setId(2);
         account002.setActive(true);
         account002.setAmount(2000.0);
         account002.setRate(0.15);
@@ -199,7 +187,7 @@ public class BasicTests {
         persist(account002);
 
         // read
-        client = (Client) get(client, 1);
+        client = (Client) get(client, client.getId());
         assertEquals(1, client.getCreditAccounts().size());
         assertEquals(1, client.getDebitAccounts().size());
     }
@@ -207,12 +195,10 @@ public class BasicTests {
     @Test
     public void testFilter() {
         Client client = new Client();
-        client.setId(1);
         client.setName("Muhammed Topgul");
         persist(client);
 
         Account account001 = new Account();
-        account001.setId(1);
         account001.setActive(true);
         account001.setAmount(1000.0);
         account001.setRate(0.9);
@@ -222,7 +208,6 @@ public class BasicTests {
         persist(account001);
 
         Account account002 = new Account();
-        account002.setId(2);
         account002.setActive(false);
         account002.setAmount(2000.0);
         account002.setRate(0.15);
@@ -247,7 +232,7 @@ public class BasicTests {
         assertEquals(1, accounts.size());
 
         // field level filter
-        client = session.get(Client.class, 1);
+        client = session.get(Client.class, client.getId());
 
         assertEquals(1, client.getAccounts().size());
     }
@@ -255,18 +240,17 @@ public class BasicTests {
     @Test
     public void testSqlDelete() throws InterruptedException {
         User user = new User();
-        user.setId(1);
         user.setUsername("muhammed-topgul");
         user.setActive(true);
         user.setDeleted(false);
 
         persist(user);
 
-        Thread.sleep(5000);
+        // Thread.sleep(5000);
 
         Session session = getSession();
         Transaction transaction = getTransaction(session);
-        user = session.get(User.class, 1);
+        user = session.get(User.class, user.getId());
 
         session.remove(user);
 
@@ -275,43 +259,8 @@ public class BasicTests {
     }
 
     @Test
-    public void testJoinFormula() {
-        // write
-        Country Turkey = new Country();
-        Turkey.setId(1);
-        Turkey.setName("Turkey");
-        persist(Turkey);
-
-        Country US = new Country();
-        US.setId(2);
-        US.setName("United States");
-        persist(US);
-
-        User user1 = new User();
-        user1.setId(1);
-        user1.setActive(true);
-        user1.setFirstName("Muhammed");
-        user1.setLastName("Topgul");
-        user1.setPhoneNumber("+1-234-5678");
-        persist(user1);
-
-        User user2 = new User();
-        user2.setId(2);
-        user2.setActive(true);
-        user2.setFirstName("Vlad");
-        user2.setLastName("Mihalcea");
-        user2.setPhoneNumber("+40-123-4567");
-        persist(user2);
-
-        // read
-        User muhammed = (User) get(user1, 1);
-        assertEquals(Turkey, muhammed.getCountry());
-    }
-
-    @Test
     public void testTarget() {
         City ankara = new City();
-        ankara.setId(1);
         ankara.setName("Ankara");
         ankara.setCoordinates(new GPS(46.77120, 23.62360));
 

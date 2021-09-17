@@ -2,7 +2,10 @@ package com.muhammedtopgul.hibernatedocs.entity.base;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.GenericGenerator;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import java.io.Serializable;
@@ -13,9 +16,11 @@ import java.io.Serializable;
 
 @MappedSuperclass
 @Getter
-@Setter
 public abstract class BaseId implements Serializable {
 
     @Id
-    private Integer id;
+    @GeneratedValue(generator = "system-uuid")
+    @GenericGenerator(name = "system-uuid", strategy = "uuid")
+    @Column(name = "id", unique = true)
+    private String id;
 }

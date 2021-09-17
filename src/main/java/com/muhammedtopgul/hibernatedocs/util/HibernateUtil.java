@@ -22,7 +22,7 @@ public class HibernateUtil {
         return object;
     }
 
-    public static Object get(Object object, Integer id) {
+    public static Object get(Object object, String id) {
         if (object instanceof Product) {
             return getSession().get(Product.class, id);
         } else if (object instanceof Contact) {
