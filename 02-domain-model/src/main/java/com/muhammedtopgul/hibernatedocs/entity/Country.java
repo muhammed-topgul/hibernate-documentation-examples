@@ -1,7 +1,9 @@
 package com.muhammedtopgul.hibernatedocs.entity;
 
 import com.muhammedtopgul.hibernatedocs.entity.base.BaseId;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.NaturalId;
 
@@ -13,6 +15,8 @@ import java.util.Objects;
  */
 
 @Entity(name = "Country")
+@NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 public class Country extends BaseId {

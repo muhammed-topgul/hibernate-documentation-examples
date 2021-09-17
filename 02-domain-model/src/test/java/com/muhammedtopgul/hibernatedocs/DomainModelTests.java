@@ -12,6 +12,7 @@ import com.muhammedtopgul.hibernatedocs.user.CurrentUser;
 import org.hibernate.Filter;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -23,13 +24,13 @@ import java.util.Date;
 import java.util.List;
 
 import static com.muhammedtopgul.hibernatedocs.util.HibernateUtil.*;
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 /**
  * created by Muhammed Topgul on 13/09/2021 at 09:12
  */
 
-public class BasicTests {
+public class DomainModelTests {
 
     @Before
     public void beforeAll() {
@@ -307,7 +308,33 @@ public class BasicTests {
         persist(book);
     }
 
-    @Before
+    @Test
+    public void testSessionScopeOfIdentity() {
+        // write
+        Book book1 = new Book();
+        book1.setAuthor("Muhammed");
+        book1.setTitle("How to Java 17");
+        persist(book1);
+
+        Book book2 = new Book();
+        book2.setAuthor("Muhammed");
+        book2.setTitle("How to Hibernate");
+        persist(book2);
+
+        // read
+        Session session = getSession();
+        Transaction transaction = getTransaction(session);
+
+        transactionCommit(transaction);
+
+        book1 = session.get(Book.class, book1.getId());
+        // returns same object from persistence context not from database
+        book2 = session.get(Book.class, book1.getId());
+
+        assertSame(book1, book2);
+    }
+
+    @After
     public void afterAll() {
         CurrentUser.INSTANCE.logOut();
     }
