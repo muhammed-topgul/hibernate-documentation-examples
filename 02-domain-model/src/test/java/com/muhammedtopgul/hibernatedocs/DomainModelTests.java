@@ -334,6 +334,51 @@ public class DomainModelTests {
         assertSame(book1, book2);
     }
 
+    @Test
+    public void testSessionScopeOfSet() {
+        // write
+        Book book1 = new Book();
+        book1.setAuthor("Muhammed");
+        book1.setTitle("How to Java 17");
+        persist(book1);
+
+        Book book2 = new Book();
+        book2.setAuthor("Muhammed");
+        book2.setTitle("How to Hibernate");
+        persist(book2);
+
+        Library library = new Library();
+        library.setName("Public Libs");
+        persist(library);
+
+        // read
+        Session session = getSession();
+        Transaction transaction = getTransaction(session);
+
+        transactionCommit(transaction);
+
+        library = session.get(Library.class, library.getId());
+
+        book1 = session.get(Book.class, book1.getId());
+        // returns same object from persistence context not from database
+        book2 = session.get(Book.class, book1.getId());
+
+        library.addBook(book1);
+        library.addBook(book2);
+
+        assertEquals(1, library.getBooks().size());
+
+        // close session
+        sessionClose(session);
+        session = getSession();
+
+        // returns from database not from persistence context
+        book2 = session.get(Book.class, book1.getId());
+        library.addBook(book2);
+
+        assertEquals(2, library.getBooks().size());
+    }
+
     @After
     public void afterAll() {
         CurrentUser.INSTANCE.logOut();
