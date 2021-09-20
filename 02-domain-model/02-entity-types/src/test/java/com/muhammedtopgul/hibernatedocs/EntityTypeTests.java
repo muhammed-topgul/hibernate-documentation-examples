@@ -4,16 +4,25 @@ package com.muhammedtopgul.hibernatedocs;
  * created by Muhammed Topgul on 20/09/2021 at 13:01
  */
 
+import com.muhammedtopgul.hibernatedocs.config.HibernateConfig;
 import com.muhammedtopgul.hibernatedocs.entity.Book;
 import com.muhammedtopgul.hibernatedocs.entity.Identifiable;
+import com.muhammedtopgul.hibernatedocs.utility.HibernateUtil;
 import org.hibernate.Session;
+import org.junit.Before;
 import org.junit.Test;
 
-import static com.muhammedtopgul.hibernatedocs.util.HibernateUtil.*;
+import static com.muhammedtopgul.hibernatedocs.utility.HibernateUtil.getSession;
+import static com.muhammedtopgul.hibernatedocs.utility.HibernateUtil.persist;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class EntityTypeTests {
+
+    @Before
+    public void beforeAll() {
+        HibernateUtil.setConfig(new HibernateConfig());
+    }
 
     @Test
     public void testCustomProxyClass() {

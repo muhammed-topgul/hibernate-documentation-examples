@@ -1,7 +1,7 @@
-package com.muhammedtopgul.hibernatedocs.util;
+package com.muhammedtopgul.hibernatedocs.utility;
 
-import com.muhammedtopgul.hibernatedocs.config.HibernateConfig;
-import com.muhammedtopgul.hibernatedocs.entity.Book;
+import com.muhammedtopgul.hibernatedocs.config.Config;
+import lombok.Setter;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -10,6 +10,16 @@ import org.hibernate.Transaction;
  */
 
 public class HibernateUtil {
+
+    @Setter
+    private static Config config;
+
+    private HibernateUtil() {
+    }
+
+//    public HibernateUtil(Config config) {
+//        HibernateUtil.config = config;
+//    }
 
     public static Object persist(Object object) {
         Session session = getSession();
@@ -22,16 +32,12 @@ public class HibernateUtil {
         return object;
     }
 
-    public static Object get(Object object, String id) {
-        if (object instanceof Book) {
-            return getSession().get(Book.class, id);
-        }
-
-        throw new UnsupportedOperationException(object.getClass() + " is not present");
+    public static <T> T get(Class<T> clazz, String id) {
+        return getSession().get(clazz, id);
     }
 
     public static Session getSession() {
-        return HibernateConfig.getSessionFactory().openSession();
+        return config.getSessionFactory().openSession();
     }
 
     public static Transaction getTransaction(Session session) {

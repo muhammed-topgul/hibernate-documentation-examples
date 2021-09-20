@@ -14,7 +14,7 @@ import javax.persistence.Table;
 
 @Entity(name = "User_")
 @Table(schema = "basics", name = "user_")
-@SQLDelete(sql = "UPDATE User_ SET deleted = true, active = false WHERE id = ?")
+@SQLDelete(sql = "UPDATE basics.User_ SET deleted = true, active = false WHERE id = ?")
 @Getter
 @Setter
 public class User extends BaseId {

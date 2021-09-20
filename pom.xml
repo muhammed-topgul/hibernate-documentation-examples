@@ -23,6 +23,9 @@
 
     <modules>
         <module>02-domain-model</module>
+        <module>commons</module>
+        <module>utility</module>
+        <module>config-common</module>
     </modules>
 
     <properties>

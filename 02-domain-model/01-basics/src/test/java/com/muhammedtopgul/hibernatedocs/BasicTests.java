@@ -1,5 +1,6 @@
 package com.muhammedtopgul.hibernatedocs;
 
+import com.muhammedtopgul.hibernatedocs.config.Config;
 import com.muhammedtopgul.hibernatedocs.config.HibernateConfig;
 import com.muhammedtopgul.hibernatedocs.entity.*;
 import com.muhammedtopgul.hibernatedocs.entity.embeddable.GPS;
@@ -9,6 +10,7 @@ import com.muhammedtopgul.hibernatedocs.enumeration.AccountType;
 import com.muhammedtopgul.hibernatedocs.enumeration.Gender;
 import com.muhammedtopgul.hibernatedocs.enumeration.PhoneType;
 import com.muhammedtopgul.hibernatedocs.user.CurrentUser;
+import com.muhammedtopgul.hibernatedocs.utility.HibernateUtil;
 import org.hibernate.Filter;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -23,7 +25,7 @@ import java.util.BitSet;
 import java.util.Date;
 import java.util.List;
 
-import static com.muhammedtopgul.hibernatedocs.util.HibernateUtil.*;
+import static com.muhammedtopgul.hibernatedocs.utility.HibernateUtil.*;
 import static org.junit.Assert.*;
 
 /**
@@ -34,6 +36,7 @@ public class BasicTests {
 
     @Before
     public void beforeAll() {
+        HibernateUtil.setConfig(new HibernateConfig());
         CurrentUser.INSTANCE.logIn("Muhammed");
     }
 
@@ -44,7 +47,7 @@ public class BasicTests {
         transactionCommit(getTransaction(session));
 
         sessionClose(session);
-        HibernateConfig.getSessionFactory().close();
+        new HibernateConfig().getSessionFactory().close();
     }
 
     @Test
@@ -133,7 +136,7 @@ public class BasicTests {
 
         persist(product);
 
-        product = (Product) get(product, product.getId());
+        product = get(Product.class, product.getId());
         assertEquals("My product warranty", product.getWarranty());
     }
 
@@ -159,7 +162,7 @@ public class BasicTests {
 
         persist(account);
 
-        account = (Account) get(account, account.getId());
+        account = get(Account.class, account.getId());
         assertEquals(String.valueOf(account.getCredit() * account.getRate()), account.getInterest().toString());
     }
 
@@ -191,7 +194,7 @@ public class BasicTests {
         persist(account002);
 
         // read
-        client = (Client) get(client, client.getId());
+        client = get(Client.class, client.getId());
         assertEquals(1, client.getCreditAccounts().size());
         assertEquals(1, client.getDebitAccounts().size());
     }
@@ -395,8 +398,8 @@ public class BasicTests {
         persist(book2);
 
         // read
-        book1 = (Book) get(book1, book1.getId());
-        book2 = (Book) get(book2, book2.getId());
+        book1 = get(Book.class, book1.getId());
+        book2 = get(Book.class, book2.getId());
 
         assertNotSame(book1, book2);
     }

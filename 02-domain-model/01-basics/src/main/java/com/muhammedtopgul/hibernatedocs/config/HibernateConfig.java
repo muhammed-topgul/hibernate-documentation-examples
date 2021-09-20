@@ -9,11 +9,12 @@ import org.hibernate.cfg.Configuration;
  * created by Muhammed Topgul on 13/09/2021 at 09:09
  */
 
-public class HibernateConfig {
+public class HibernateConfig implements Config {
 
     private static final SessionFactory sessionFactory;
 
-    public static SessionFactory getSessionFactory() {
+    @Override
+    public SessionFactory getSessionFactory() {
         return sessionFactory;
     }
 
@@ -23,7 +24,7 @@ public class HibernateConfig {
         // for type conversion
         configuration.registerTypeContributor((typeContributions, serviceRegistry) -> {
             // typeContributions.contributeType(BitSetType.INSTANCE); for BasicType conversion
-            typeContributions.contributeType( BitSetUserType.INSTANCE, "bitset");
+            typeContributions.contributeType(BitSetUserType.INSTANCE, "bitset");
             typeContributions.contributeType(GenderType.INSTANCE, "genderType");
         });
 
