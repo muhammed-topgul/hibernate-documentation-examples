@@ -10,5 +10,6 @@
         <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/hibernatedocs</property>
 
         <mapping class="com.muhammedtopgul.hibernatedocs.identifiers.entity.SystemUser"/>
+        <mapping class="com.muhammedtopgul.hibernatedocs.identifiers.entity.Subsystem"/>
     </session-factory>
 </hibernate-configuration>

@@ -2,6 +2,7 @@ package com.muhammedtopgul.hibernatedocs.identifiers;
 
 import com.muhammedtopgul.hibernatedocs.identifiers.config.HibernateConfig;
 import com.muhammedtopgul.hibernatedocs.identifiers.entity.PK;
+import com.muhammedtopgul.hibernatedocs.identifiers.entity.Subsystem;
 import com.muhammedtopgul.hibernatedocs.identifiers.entity.SystemUser;
 import com.muhammedtopgul.hibernatedocs.utility.HibernateUtil;
 import org.junit.Before;
@@ -22,7 +23,11 @@ public class IdentifiersTests {
 
     @Test
     public void testCompositeKey() {
-        PK pk = new PK("windows", "muhammed.topgul");
+        Subsystem subsystem = new Subsystem();
+        subsystem.setDescription("windows 10 machine");
+        persist(subsystem);
+
+        PK pk = new PK(subsystem, "muhammed.topgul");
 
         SystemUser systemUser = new SystemUser();
         systemUser.setPk(pk);

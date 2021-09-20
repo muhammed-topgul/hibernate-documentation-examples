@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.Embeddable;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -18,7 +20,8 @@ import java.util.Objects;
 @Setter
 public class PK implements Serializable {
 
-    private String subsystem;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Subsystem subsystem;
 
     private String username;
 
