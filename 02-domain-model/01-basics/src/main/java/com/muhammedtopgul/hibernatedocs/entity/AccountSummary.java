@@ -33,6 +33,4 @@ public class AccountSummary extends BaseId {
     private String clientName;
 
     private int balance;
-
-    private String description;
 }

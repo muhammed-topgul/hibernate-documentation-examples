@@ -30,7 +30,7 @@ import static org.junit.Assert.*;
  * created by Muhammed Topgul on 13/09/2021 at 09:12
  */
 
-public class DomainModelTests {
+public class BasicTests {
 
     @Before
     public void beforeAll() {
