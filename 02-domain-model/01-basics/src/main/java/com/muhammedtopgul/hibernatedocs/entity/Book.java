@@ -14,7 +14,7 @@ import javax.persistence.Table;
  */
 
 @Entity(name = "Book")
-@Table(catalog = "public", schema = "custom_schema", name = "book")
+@Table(schema = "basics", name = "book")
 @Getter
 @Setter
 public class Book extends BaseId {

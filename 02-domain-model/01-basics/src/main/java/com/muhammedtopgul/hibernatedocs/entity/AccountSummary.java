@@ -19,9 +19,9 @@ import javax.persistence.Entity;
                 "    a.id as id, " +
                 "    concat(concat(c.firstname, ' '), c.lastname) as clientName, " +
                 "    sum(at.cents) as balance " +
-                "from account a " +
-                "join client c on c.id = a.account_client_id " +
-                "join account_transaction at on a.id = at.account_id " +
+                "from basics.account a " +
+                "join basics.client c on c.id = a.account_client_id " +
+                "join basics.account_transaction at on a.id = at.account_id " +
                 "group by a.id, concat(concat(c.firstname, ' '), c.lastname)"
 )
 @Synchronize({"client", "account", "account_transaction"})

@@ -11,6 +11,7 @@ import org.hibernate.annotations.Where;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +20,7 @@ import java.util.List;
  */
 
 @Entity(name = "Client")
+@Table(schema = "basics", name = "client")
 @Getter
 @Setter
 @ToString

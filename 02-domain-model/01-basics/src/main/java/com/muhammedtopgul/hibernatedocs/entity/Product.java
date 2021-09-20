@@ -8,6 +8,7 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.Entity;
 import javax.persistence.Lob;
+import javax.persistence.Table;
 import java.util.BitSet;
 
 /**
@@ -15,6 +16,7 @@ import java.util.BitSet;
  */
 
 @Entity(name = "Product")
+@Table(schema = "basics", name = "product")
 //@TypeDef(
 //        name = "bitset",
 //        defaultForType = BitSet.class,

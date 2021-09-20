@@ -29,6 +29,7 @@ import javax.persistence.*;
         condition = "active_status = :active"
 )
 @Entity(name = "Account")
+@Table(schema = "basics", name = "account")
 // @Where(clause = "active = true")
 @Getter
 @Setter

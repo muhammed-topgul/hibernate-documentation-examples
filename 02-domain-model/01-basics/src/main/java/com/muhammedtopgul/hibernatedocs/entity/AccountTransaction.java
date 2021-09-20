@@ -1,6 +1,5 @@
 package com.muhammedtopgul.hibernatedocs.entity;
 
-import com.muhammedtopgul.hibernatedocs.entity.Account;
 import com.muhammedtopgul.hibernatedocs.entity.base.BaseId;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,7 +13,7 @@ import javax.persistence.Table;
  */
 
 @Entity(name = "AccountTransaction")
-@Table(name = "account_transaction")
+@Table(schema = "basics", name = "account_transaction")
 @Getter
 @Setter
 public class AccountTransaction extends BaseId {

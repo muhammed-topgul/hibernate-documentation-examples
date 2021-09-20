@@ -5,10 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 import java.util.Date;
 
 /**
@@ -16,6 +13,7 @@ import java.util.Date;
  */
 
 @Entity(name = "DateEvent")
+@Table(schema = "basics", name = "dateevent")
 @Getter
 @Setter
 @ToString

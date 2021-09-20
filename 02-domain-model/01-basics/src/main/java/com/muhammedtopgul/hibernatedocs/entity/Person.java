@@ -9,12 +9,14 @@ import lombok.ToString;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 /**
  * created by Muhammed Topgul on 15/09/2021 at 17:25
  */
 
 @Entity(name = "Person")
+@Table(schema = "basics", name = "person")
 @Getter
 @Setter
 @ToString

@@ -9,12 +9,14 @@ import org.hibernate.annotations.Target;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 /**
  * created by Muhammed Topgul on 16/09/2021 at 17:29
  */
 
 @Entity(name = "City")
+@Table(schema = "basics", name = "city")
 @Getter
 @Setter
 public class City extends BaseId {

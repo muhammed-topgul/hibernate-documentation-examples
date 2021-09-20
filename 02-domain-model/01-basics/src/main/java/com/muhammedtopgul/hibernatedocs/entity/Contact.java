@@ -6,10 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.Type;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
+import javax.persistence.*;
 import java.net.URL;
 
 /**
@@ -17,6 +14,7 @@ import java.net.URL;
  */
 
 @Entity(name = "Contact")
+@Table(schema = "basics", name = "contact")
 @Getter
 @Setter
 public class Contact extends BaseTimestamp {

@@ -8,6 +8,7 @@ import lombok.Setter;
 import org.hibernate.annotations.NaturalId;
 
 import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.Objects;
 
 /**
@@ -15,6 +16,7 @@ import java.util.Objects;
  */
 
 @Entity(name = "Country")
+@Table(schema = "basics", name = "country")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter

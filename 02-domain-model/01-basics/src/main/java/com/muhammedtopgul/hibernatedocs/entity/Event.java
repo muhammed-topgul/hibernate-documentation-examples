@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.Date;
 
 /**
@@ -14,6 +15,7 @@ import java.util.Date;
  */
 
 @Entity(name = "Event")
+@Table(schema = "basics", name = "event")
 @Getter
 @Setter
 public class Event extends BaseId {
