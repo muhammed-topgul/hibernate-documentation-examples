@@ -1,7 +1,7 @@
-[HibernateDocs]: <https://docs.jboss.org/hibernate/orm/5.2/userguide/html_single/Hibernate_User_Guide.html>
+[Hibernate Reference Documentation]: <https://docs.jboss.org/hibernate/orm/5.2/userguide/html_single/Hibernate_User_Guide.html>
 
 ## About the Project
-Project contains Hibernate Reference Documentation code examples with Java and PostgreSql.
+Project contains [Hibernate Reference Documentation] code examples with Java and PostgreSql.
 
 
 ## Requirements
