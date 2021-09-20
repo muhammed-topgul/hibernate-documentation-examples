@@ -167,7 +167,8 @@ public class DomainModelTests {
     public void testWhereClause() {
         // write
         Client client = new Client();
-        client.setName("Muhammed Topgul");
+        client.setFirstName("Muhammed");
+        client.setLastName("Topgul");
         persist(client);
 
         Account account001 = new Account();
@@ -198,7 +199,8 @@ public class DomainModelTests {
     @Test
     public void testFilter() {
         Client client = new Client();
-        client.setName("Muhammed Topgul");
+        client.setFirstName("Muhammed");
+        client.setLastName("Topgul");
         persist(client);
 
         Account account001 = new Account();
@@ -418,6 +420,38 @@ public class DomainModelTests {
         library.addBook(book2);
 
         assertEquals(2, library.getBooks().size());
+    }
+
+    @Test
+    public void testSubSelect() {
+        Client client = new Client();
+        client.setFirstName("John");
+        client.setLastName("Doe");
+        persist(client);
+
+        Account account = new Account();
+        account.setClient(client);
+        account.setDescription("Checking account");
+        persist(account);
+
+        AccountTransaction transaction = new AccountTransaction();
+        transaction.setAccount(account);
+        transaction.setDescription("Salary");
+        transaction.setCents(100 * 7000);
+        persist(transaction);
+
+        Session session = getSession();
+
+        AccountSummary summary = session.createQuery(
+                        "select s " +
+                                "from AccountSummary s " +
+                                "where s.id = :id", AccountSummary.class)
+                .setParameter("id", account.getId())
+                .getSingleResult();
+
+        assertEquals("John Doe", summary.getClientName());
+        assertEquals(100 * 7000, summary.getBalance());
+        System.out.println(summary);
     }
 
     @After

@@ -55,4 +55,6 @@ public class Account extends BaseId {
 
     @Column(name = "active_status")
     private boolean active;
+
+    private String description;
 }

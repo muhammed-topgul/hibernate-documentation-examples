@@ -24,7 +24,9 @@ import java.util.List;
 @ToString
 public class Client extends BaseId {
 
-    private String name;
+    private String firstName;
+
+    private String lastName;
 
     @Where(clause = "account_type = 'DEBIT'")
     @OneToMany(mappedBy = "client")

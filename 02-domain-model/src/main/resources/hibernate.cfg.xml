@@ -22,5 +22,7 @@
         <mapping class="com.muhammedtopgul.hibernatedocs.entity.City"/>
         <mapping class="com.muhammedtopgul.hibernatedocs.entity.Book"/>
         <mapping class="com.muhammedtopgul.hibernatedocs.entity.Library"/>
+        <mapping class="com.muhammedtopgul.hibernatedocs.entity.AccountTransaction"/>
+        <mapping class="com.muhammedtopgul.hibernatedocs.entity.AccountSummary"/>
     </session-factory>
 </hibernate-configuration>

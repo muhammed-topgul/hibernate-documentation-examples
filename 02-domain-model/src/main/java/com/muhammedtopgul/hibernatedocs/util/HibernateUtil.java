@@ -1,5 +1,6 @@
 package com.muhammedtopgul.hibernatedocs.util;
 
+import com.muhammedtopgul.hibernatedocs.entity.AccountTransaction;
 import com.muhammedtopgul.hibernatedocs.config.HibernateConfig;
 import com.muhammedtopgul.hibernatedocs.entity.*;
 import org.hibernate.Session;
@@ -41,6 +42,8 @@ public class HibernateUtil {
             return getSession().get(Country.class, id);
         } else if (object instanceof Book) {
             return getSession().get(Book.class, id);
+        } else if (object instanceof AccountTransaction) {
+            return getSession().get(AccountTransaction.class, id);
         }
 
         throw new UnsupportedOperationException(object.getClass() + " is not present");
