@@ -34,7 +34,7 @@ public class HibernateUtil {
 
     public static Session getSession() {
         if (config == null)
-            throw new IllegalStateException();
+            throw new NullPointerException("Config implementation must be set before create session.");
         return config.getSessionFactory().openSession();
     }
 
