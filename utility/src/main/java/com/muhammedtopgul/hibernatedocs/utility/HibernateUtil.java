@@ -17,10 +17,6 @@ public class HibernateUtil {
     private HibernateUtil() {
     }
 
-//    public HibernateUtil(Config config) {
-//        HibernateUtil.config = config;
-//    }
-
     public static Object persist(Object object) {
         Session session = getSession();
         Transaction transaction = getTransaction(session);
@@ -37,6 +33,8 @@ public class HibernateUtil {
     }
 
     public static Session getSession() {
+        if (config == null)
+            throw new IllegalStateException();
         return config.getSessionFactory().openSession();
     }
 
