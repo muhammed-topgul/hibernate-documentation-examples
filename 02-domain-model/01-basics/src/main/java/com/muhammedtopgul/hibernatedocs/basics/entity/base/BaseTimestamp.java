@@ -1,6 +1,7 @@
 package com.muhammedtopgul.hibernatedocs.basics.entity.base;
 
 import com.muhammedtopgul.hibernatedocs.basics.user.LoggedUserGenerator;
+import com.muhammedtopgul.hibernatedocs.commons.BaseId;
 import lombok.Getter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenerationTime;

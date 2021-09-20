@@ -1,4 +1,4 @@
-package com.muhammedtopgul.hibernatedocs.entitytypes.entity.base;
+package com.muhammedtopgul.hibernatedocs.commons;
 
 import lombok.Getter;
 import lombok.Setter;

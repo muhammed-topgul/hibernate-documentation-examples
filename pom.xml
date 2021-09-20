@@ -26,6 +26,7 @@
         <module>commons</module>
         <module>utility</module>
         <module>config-common</module>
+        <module>commons</module>
     </modules>
 
     <properties>

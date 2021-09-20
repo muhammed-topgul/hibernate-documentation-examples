@@ -1,6 +1,6 @@
 package com.muhammedtopgul.hibernatedocs.basics.entity;
 
-import com.muhammedtopgul.hibernatedocs.basics.entity.base.BaseId;
+import com.muhammedtopgul.hibernatedocs.commons.BaseId;
 import lombok.Getter;
 import lombok.Setter;
 

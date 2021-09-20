@@ -1,7 +1,7 @@
 package com.muhammedtopgul.hibernatedocs.basics.entity;
 
-import com.muhammedtopgul.hibernatedocs.basics.entity.base.BaseId;
 import com.muhammedtopgul.hibernatedocs.basics.enumeration.AccountType;
+import com.muhammedtopgul.hibernatedocs.commons.BaseId;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
