@@ -32,6 +32,17 @@ public class HibernateUtil {
         return getSession().get(clazz, id);
     }
 
+    public static <T> void remove(Class<T> clazz, String id) {
+        Session session = getSession();
+        Transaction transaction = getTransaction(session);
+
+        Object object = session.get(clazz, id);
+
+        sessionRemove(session, object);
+
+        transactionCommit(transaction);
+    }
+
     public static Session getSession() {
         if (config == null)
             throw new NullPointerException("Config implementation must be set before create session.");
@@ -44,6 +55,10 @@ public class HibernateUtil {
 
     public static void sessionPersist(Session session, Object object) {
         session.persist(object);
+    }
+
+    public static void sessionRemove(Session session, Object object) {
+        session.remove(object);
     }
 
     public static void transactionCommit(Transaction transaction) {
