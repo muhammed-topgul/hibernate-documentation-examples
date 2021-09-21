@@ -11,5 +11,7 @@
 
         <mapping class="com.muhammedtopgul.hibernatedocs.associations.entity.Person"/>
         <mapping class="com.muhammedtopgul.hibernatedocs.associations.entity.Phone"/>
+        <mapping class="com.muhammedtopgul.hibernatedocs.associations.entity.Country"/>
+        <mapping class="com.muhammedtopgul.hibernatedocs.associations.entity.City"/>
     </session-factory>
 </hibernate-configuration>
