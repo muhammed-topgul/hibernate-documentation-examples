@@ -27,4 +27,8 @@ public class Person extends BaseId {
     public void addPhone(Phone phone) {
         this.getPhones().add(phone);
     }
+
+    public void removePhone(Phone phone) {
+        this.getPhones().remove(phone);
+    }
 }

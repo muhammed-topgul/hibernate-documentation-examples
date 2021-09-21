@@ -5,6 +5,7 @@ import com.muhammedtopgul.hibernatedocs.associations.entity.Person;
 import com.muhammedtopgul.hibernatedocs.associations.entity.Phone;
 import com.muhammedtopgul.hibernatedocs.utility.HibernateUtil;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -34,5 +35,29 @@ public class AssociationsTests {
 
         // remove
         remove(Person.class, person.getId());
+    }
+
+    @Test
+    public void testCascading() {
+        // write
+        Phone phone = new Phone();
+        phone.setNumber("123-456-7890");
+
+        Person person = new Person();
+        person.setName("Muhammed Topgul");
+        person.addPhone(phone);
+        persist(person);
+
+        // remove
+        Session session = getSession();
+        Transaction transaction = getTransaction(session);
+
+        person = session.get(Person.class, person.getId());
+        phone = session.get(Phone.class, phone.getId());
+
+        person.removePhone(phone);
+        session.persist(person);
+        transaction.commit();
+        session.close();
     }
 }
