@@ -22,6 +22,7 @@ create database hibernatedocs;
 #### Create Schemas
 ```sh
 create schema basics;
-create schema entity_type;
+create schema entity_types;
 create schema identifiers;
+create schema associations;
 ```

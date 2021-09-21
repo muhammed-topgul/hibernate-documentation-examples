@@ -14,7 +14,7 @@ import javax.persistence.Table;
  */
 
 @Entity(name = "Book")
-@Table(schema = "entity_type")
+@Table(schema = "entity_types")
 @Proxy(proxyClass = Identifiable.class)
 @Getter
 @Setter
