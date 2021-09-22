@@ -28,6 +28,16 @@ public class HibernateUtil {
         return object;
     }
 
+    public static Session persistAndReturnSession(Object object) {
+        Session session = getSession();
+        Transaction transaction = getTransaction(session);
+
+        sessionPersist(session, object);
+        transactionCommit(transaction);
+
+        return session;
+    }
+
     public static <T> T get(Class<T> clazz, String id) {
         return getSession().get(clazz, id);
     }

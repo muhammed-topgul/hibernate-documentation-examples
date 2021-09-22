@@ -23,7 +23,7 @@ public class City extends BaseId {
 
     private String name;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinTable(schema = "associations", name = "country_city")
     private Country country;
 }

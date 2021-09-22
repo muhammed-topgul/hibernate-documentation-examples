@@ -68,10 +68,22 @@ public class AssociationsTests {
         Country country = new Country();
         country.setName("Turkey");
 
-        City city = new City();
-        city.setCode("06");
-        city.setName("Ankara");
-        city.setCountry(country);
-        persist(city);
+        City ankara = new City();
+        ankara.setCode("06");
+        ankara.setName("Ankara");
+
+        City istanbul = new City();
+        istanbul.setCode("34");
+        istanbul.setName("Istanbul");
+
+        country.addCity(ankara);
+        country.addCity(istanbul);
+
+        Session session = persistAndReturnSession(country);
+        Transaction transaction = getTransaction(session);
+
+        country.removeCity(ankara);
+        session.persist(country);
+        transactionCommit(transaction);
     }
 }

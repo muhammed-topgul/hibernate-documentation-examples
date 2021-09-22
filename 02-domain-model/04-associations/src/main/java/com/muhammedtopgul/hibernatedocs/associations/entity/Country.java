@@ -5,6 +5,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -24,6 +25,16 @@ public class Country extends BaseId {
     private String name;
 
     @Setter(value = AccessLevel.NONE)
-    @OneToMany(mappedBy = "country", orphanRemoval = true)
+    @OneToMany(mappedBy = "country", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<City> cities = new ArrayList<>();
+
+    public void addCity(City city) {
+        this.getCities().add(city);
+        city.setCountry(this);
+    }
+
+    public void removeCity(City city) {
+        this.getCities().remove(city);
+        city.setCountry(null);
+    }
 }
