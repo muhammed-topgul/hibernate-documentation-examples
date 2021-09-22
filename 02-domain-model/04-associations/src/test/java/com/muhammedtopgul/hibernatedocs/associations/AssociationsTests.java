@@ -1,10 +1,7 @@
 package com.muhammedtopgul.hibernatedocs.associations;
 
 import com.muhammedtopgul.hibernatedocs.associations.config.HibernateConfig;
-import com.muhammedtopgul.hibernatedocs.associations.entity.City;
-import com.muhammedtopgul.hibernatedocs.associations.entity.Country;
-import com.muhammedtopgul.hibernatedocs.associations.entity.Person;
-import com.muhammedtopgul.hibernatedocs.associations.entity.Phone;
+import com.muhammedtopgul.hibernatedocs.associations.entity.*;
 import com.muhammedtopgul.hibernatedocs.utility.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -85,5 +82,19 @@ public class AssociationsTests {
         country.removeCity(ankara);
         session.persist(country);
         transactionCommit(transaction);
+    }
+
+    @Test
+    public void testOneToOneUnidirectional() {
+        PhoneDetail phoneDetail = new PhoneDetail();
+        phoneDetail.setTechnology("5G");
+        phoneDetail.setProvider("Huawei");
+        persist(phoneDetail);
+
+        Phone phone = new Phone();
+        phone.setNumber("123-456-7890");
+        phone.setPhoneDetail(phoneDetail);
+
+        persist(phone);
     }
 }
