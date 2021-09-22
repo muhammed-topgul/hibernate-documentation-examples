@@ -132,4 +132,42 @@ public class AssociationsTests {
         transactionCommit(transaction);
         sessionClose(session);
     }
+
+    @Test
+    public void testManyToManyUnidirectional() {
+        Person person1 = new Person();
+        person1.setName("Muhammed");
+        Person person2 = new Person();
+        person2.setName("John");
+
+        Address address1 = new Address();
+        address1.setStreet("12th Avenue");
+        address1.setNumber("12A");
+
+        Address address2 = new Address();
+        address2.setStreet("18th Avenue");
+        address2.setNumber("18B");
+
+        person1.addAddress(address1);
+        person1.addAddress(address2);
+
+        person2.getAddresses().add(address1);
+
+        Session session = getSession();
+        Transaction transaction = getTransaction(session);
+
+        session.persist(person1);
+        session.persist(person2);
+
+        transactionCommit(transaction);
+        sessionClose(session);
+
+        session = getSession();
+        transaction = getTransaction(session);
+        person1 = session.get(Person.class, person1.getId());
+        session.remove(person1);
+
+        transactionCommit(transaction);
+        sessionClose(session);
+    }
 }

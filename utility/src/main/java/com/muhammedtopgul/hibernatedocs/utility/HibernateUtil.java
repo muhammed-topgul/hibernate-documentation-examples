@@ -20,21 +20,17 @@ public class HibernateUtil {
     public static Object persist(Object object) {
         Session session = getSession();
         Transaction transaction = getTransaction(session);
-
         sessionPersist(session, object);
         transactionCommit(transaction);
         sessionClose(session);
-
         return object;
     }
 
     public static Session persistAndReturnSession(Object object) {
         Session session = getSession();
         Transaction transaction = getTransaction(session);
-
         sessionPersist(session, object);
         transactionCommit(transaction);
-
         return session;
     }
 
@@ -45,11 +41,8 @@ public class HibernateUtil {
     public static <T> void remove(Class<T> clazz, String id) {
         Session session = getSession();
         Transaction transaction = getTransaction(session);
-
         Object object = session.get(clazz, id);
-
         sessionRemove(session, object);
-
         transactionCommit(transaction);
     }
 
