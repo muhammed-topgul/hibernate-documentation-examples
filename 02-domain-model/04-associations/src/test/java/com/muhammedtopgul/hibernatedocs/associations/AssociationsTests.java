@@ -84,6 +84,7 @@ public class AssociationsTests {
         transactionCommit(transaction);
     }
 
+    // result will be proper only unidirectional relation
     @Test
     public void testOneToOneUnidirectional() {
         PhoneDetail phoneDetail = new PhoneDetail();
@@ -96,5 +97,39 @@ public class AssociationsTests {
         phone.setPhoneDetail(phoneDetail);
 
         persist(phone);
+    }
+
+    // save two entity in two persist operation
+    @Test
+    public void testOneToOneBidirectionalFirstSolution() {
+        Phone phone = new Phone();
+        phone.setNumber("123-456-7890");
+        persist(phone);
+
+        PhoneDetail phoneDetail = new PhoneDetail();
+        phoneDetail.setTechnology("5G");
+        phoneDetail.setProvider("Huawei");
+        phoneDetail.setPhone(phone);
+        persist(phoneDetail);
+    }
+
+    @Test
+    public void testOneToOneBidirectionalSecondSolution() throws InterruptedException {
+        PhoneDetail phoneDetail = new PhoneDetail();
+        phoneDetail.setTechnology("5G");
+        phoneDetail.setProvider("Huawei");
+
+        Phone phone = new Phone();
+        phone.setNumber("123-456-7890");
+        phone.addPhoneDetail(phoneDetail);
+        Session session = persistAndReturnSession(phone);
+        Transaction transaction = getTransaction(session);
+
+        // Thread.sleep(5000);
+
+        phone.removePhoneDetail(phoneDetail);
+        session.persist(phone);
+        transactionCommit(transaction);
+        sessionClose(session);
     }
 }
