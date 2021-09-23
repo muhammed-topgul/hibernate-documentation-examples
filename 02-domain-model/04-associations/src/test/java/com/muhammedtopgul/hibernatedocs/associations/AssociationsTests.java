@@ -170,4 +170,52 @@ public class AssociationsTests {
         transactionCommit(transaction);
         sessionClose(session);
     }
+
+    @Test
+    public void testManyToManyLinkEntity() {
+        // write
+        Session session = getSession();
+        Transaction transaction = getTransaction(session);
+
+        Account account1 = new Account();
+        account1.setRegistrationNumber("ABC-123");
+        Account account2 = new Account();
+        account2.setRegistrationNumber("DEF-456");
+
+        Client client1 = new Client();
+        client1.setName("Muhammed");
+        client1.setCode("XYZ-987");
+
+        Client client2 = new Client();
+        client2.setName("John");
+        client2.setCode("XYZ-654");
+
+        session.persist(account1);
+        session.persist(account2);
+
+        session.persist(client1);
+        session.persist(client2);
+        transactionCommit(transaction);
+
+        // update
+        transaction = getTransaction(session);
+
+        account1.addClient(client1);
+        account1.addClient(client2);
+
+        account2.addClient(client2);
+
+        session.persist(account1);
+        session.persist(account2);
+        transactionCommit(transaction);
+
+        // remove
+        transaction = getTransaction(session);
+
+        account1.removeClient(client1);
+        session.persist(account1);
+        transactionCommit(transaction);
+
+        sessionClose(session);
+    }
 }
