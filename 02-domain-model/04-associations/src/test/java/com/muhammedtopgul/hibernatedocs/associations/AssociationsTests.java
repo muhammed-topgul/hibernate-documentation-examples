@@ -9,6 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static com.muhammedtopgul.hibernatedocs.utility.HibernateUtil.*;
+import static org.junit.Assert.*;
 
 /**
  * created by Muhammed Topgul on 21/09/2021 at 13:39
@@ -217,5 +218,21 @@ public class AssociationsTests {
         transactionCommit(transaction);
 
         sessionClose(session);
+    }
+
+    @Test
+    public void testNotFound() {
+        City istanbul = new City();
+        istanbul.setName("Istanbul");
+        persist(istanbul);
+
+        Person person = new Person();
+        person.setName("Muhammed");
+        person.setCityName("Ankara");
+        persist(person);
+
+        person = get(Person.class, person.getId());
+        assertEquals("Ankara", person.getCityName());
+        assertNull(null, person.getCity());
     }
 }
