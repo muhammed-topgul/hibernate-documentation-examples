@@ -25,4 +25,5 @@ create schema basics;
 create schema entity_types;
 create schema identifiers;
 create schema associations;
+create schema collections;
 ```
