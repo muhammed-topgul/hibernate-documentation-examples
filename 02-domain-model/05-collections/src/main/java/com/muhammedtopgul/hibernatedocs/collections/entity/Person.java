@@ -4,10 +4,7 @@ import com.muhammedtopgul.hibernatedocs.commons.BaseId;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.JoinTable;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +19,7 @@ public class Person extends BaseId {
 
     @ElementCollection
     @JoinTable(schema = "collections", name = "person_phone")
+    @OrderColumn(name = "order_id")
     private List<String> phones = new ArrayList<>();
 
     public void addPhone(String phone) {
