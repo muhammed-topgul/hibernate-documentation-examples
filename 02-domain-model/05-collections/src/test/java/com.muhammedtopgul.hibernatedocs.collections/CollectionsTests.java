@@ -2,6 +2,7 @@ package com.muhammedtopgul.hibernatedocs.collections;
 
 import com.muhammedtopgul.hibernatedocs.collections.config.HibernateConfig;
 import com.muhammedtopgul.hibernatedocs.collections.entity.Person;
+import com.muhammedtopgul.hibernatedocs.collections.entity.embeddable.Phone;
 import com.muhammedtopgul.hibernatedocs.utility.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -26,28 +27,37 @@ public class CollectionsTests {
     @Test(expected = ClassCastException.class)
     public void testCollection() {
         Person person = new Person();
-        person.addPhone("132-456-78900");
+        person.addStringPhone("132-456-78900");
 
         Session session = persistAndReturnSession(person);
 
         person = session.get(Person.class, person.getId());
-        ArrayList<String> phones = (ArrayList<String>) person.getPhones();
+        ArrayList<String> phones = (ArrayList<String>) person.getStringPhones();
     }
 
     @Test
     public void testRemoveElementCollectionUsingOrderColumn() {
         Person person = new Person();
-        person.addPhone("132-456-78900");
-        person.addPhone("132-456-78901");
-        person.addPhone("132-456-78902");
+        person.addStringPhone("132-456-78900");
+        person.addStringPhone("132-456-78901");
+        person.addStringPhone("132-456-78902");
 
         Session session = persistAndReturnSession(person);
         Transaction transaction = getTransaction(session);
 
         person = session.get(Person.class, person.getId());
-        person.getPhones().remove(0);
+        person.getStringPhones().remove(0);
 
         sessionPersist(session, person);
         transactionCommit(transaction);
+        sessionClose(session);
+    }
+
+    @Test
+    public void testEmbeddableCollections() {
+        Person person = new Person();
+        person.addEmbeddablePhones(new Phone("landline", "028-234-9876"));
+        person.addEmbeddablePhones(new Phone("mobile", "072-122-9876"));
+        persist(person);
     }
 }

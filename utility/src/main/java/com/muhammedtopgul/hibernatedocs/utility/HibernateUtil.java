@@ -18,20 +18,20 @@ public class HibernateUtil {
     }
 
     public static Object persist(Object object) {
-        Session session = getSession();
-        Transaction transaction = getTransaction(session);
-        sessionPersist(session, object);
-        transactionCommit(transaction);
-        sessionClose(session);
-        return object;
+        return persist(object, true);
     }
 
     public static Session persistAndReturnSession(Object object) {
+        return (Session) persist(object, false);
+    }
+
+    private static Object persist(Object object, boolean closeSession) {
         Session session = getSession();
         Transaction transaction = getTransaction(session);
         sessionPersist(session, object);
         transactionCommit(transaction);
-        return session;
+        if (closeSession) sessionClose(session);
+        return closeSession ? object : session;
     }
 
     public static <T> T get(Class<T> clazz, String id) {
