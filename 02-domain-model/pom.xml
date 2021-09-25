@@ -16,6 +16,8 @@
         <module>01-basics</module>
         <module>02-entity-types</module>
         <module>03-identifiers</module>
+        <module>04-associations</module>
+        <module>05-collections</module>
     </modules>
 
     <properties>
