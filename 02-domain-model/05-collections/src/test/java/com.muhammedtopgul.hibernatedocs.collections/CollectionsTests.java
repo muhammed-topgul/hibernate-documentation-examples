@@ -73,11 +73,21 @@ public class CollectionsTests {
         city2.setCode("34");
         city2.setName("Istanbul");
 
+        City city3 = new City();
+        city3.setCode("58");
+        city3.setName("Sivas");
+
         Country country = new Country();
         country.setName("Turkey");
         country.addCity(city1);
         country.addCity(city2);
+        country.addCity(city3);
 
         persist(country);
+
+        Session session = getSession();
+
+        country = session.get(Country.class, country.getId());
+        country.getCities().forEach(city -> System.out.println(city.getName()));
     }
 }
