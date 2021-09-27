@@ -3,8 +3,11 @@ package com.muhammedtopgul.hibernatedocs.collections.entity;
 import com.muhammedtopgul.hibernatedocs.commons.BaseId;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.NaturalId;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -17,7 +20,12 @@ import javax.persistence.Table;
 @Setter
 public class City extends BaseId {
 
+    @Column(name = "`code`", unique = true)
+    @NaturalId
     private String code;
 
     private String name;
+
+    @ManyToOne
+    public Country country;
 }
