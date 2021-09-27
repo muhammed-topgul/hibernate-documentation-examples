@@ -1,6 +1,8 @@
 package com.muhammedtopgul.hibernatedocs.collections;
 
 import com.muhammedtopgul.hibernatedocs.collections.config.HibernateConfig;
+import com.muhammedtopgul.hibernatedocs.collections.entity.City;
+import com.muhammedtopgul.hibernatedocs.collections.entity.Country;
 import com.muhammedtopgul.hibernatedocs.collections.entity.Person;
 import com.muhammedtopgul.hibernatedocs.collections.entity.embeddable.Phone;
 import com.muhammedtopgul.hibernatedocs.utility.HibernateUtil;
@@ -59,5 +61,23 @@ public class CollectionsTests {
         person.addEmbeddablePhones(new Phone("landline", "028-234-9876"));
         person.addEmbeddablePhones(new Phone("mobile", "072-122-9876"));
         persist(person);
+    }
+
+    @Test
+    public void testUnidirectionalBag() {
+        City city1 = new City();
+        city1.setCode("06");
+        city1.setName("Ankara");
+
+        City city2 = new City();
+        city2.setCode("34");
+        city2.setName("Istanbul");
+
+        Country country = new Country();
+        country.setName("Turkey");
+        country.addCity(city1);
+        country.addCity(city2);
+
+        persist(country);
     }
 }
