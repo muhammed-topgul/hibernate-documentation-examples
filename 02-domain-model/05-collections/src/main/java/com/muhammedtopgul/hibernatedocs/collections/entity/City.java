@@ -1,14 +1,14 @@
 package com.muhammedtopgul.hibernatedocs.collections.entity;
 
 import com.muhammedtopgul.hibernatedocs.commons.BaseId;
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.NaturalId;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * created by Muhammed Topgul on 27/09/2021 at 21:30
@@ -28,4 +28,19 @@ public class City extends BaseId {
 
     @ManyToOne
     public Country country;
+
+    @OneToMany(mappedBy = "city", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OrderColumn(name = "order_id")
+    @Setter(value = AccessLevel.NONE)
+    private List<District> districts = new ArrayList<>();
+
+    public void addDistrict(District district) {
+        this.districts.add(district);
+        district.setCity(this);
+    }
+
+    public void removeDistrict(District district) {
+        this.districts.remove(district);
+        district.setCity(null);
+    }
 }

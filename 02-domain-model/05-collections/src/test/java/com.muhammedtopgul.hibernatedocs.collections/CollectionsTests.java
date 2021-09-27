@@ -3,6 +3,7 @@ package com.muhammedtopgul.hibernatedocs.collections;
 import com.muhammedtopgul.hibernatedocs.collections.config.HibernateConfig;
 import com.muhammedtopgul.hibernatedocs.collections.entity.City;
 import com.muhammedtopgul.hibernatedocs.collections.entity.Country;
+import com.muhammedtopgul.hibernatedocs.collections.entity.District;
 import com.muhammedtopgul.hibernatedocs.collections.entity.Person;
 import com.muhammedtopgul.hibernatedocs.collections.entity.embeddable.Phone;
 import com.muhammedtopgul.hibernatedocs.utility.HibernateUtil;
@@ -89,5 +90,30 @@ public class CollectionsTests {
 
         country = session.get(Country.class, country.getId());
         country.getCities().forEach(city -> System.out.println(city.getName()));
+    }
+
+    @Test
+    public void testOrderBy() {
+        District district1 = new District();
+        district1.setName("Çankaya");
+
+        District district2 = new District();
+        district2.setName("Keçiören");
+
+        District district3 = new District();
+        district3.setName("Pursaklar");
+
+        City city = new City();
+        city.setCode("06");
+        city.setName("Ankara");
+        city.addDistrict(district1);
+        city.addDistrict(district2);
+        city.addDistrict(district3);
+
+        persist(city);
+
+        Session session = getSession();
+        city = session.get(City.class, city.getId());
+        city.getDistricts().forEach(district -> System.out.println(district.getName()));
     }
 }
