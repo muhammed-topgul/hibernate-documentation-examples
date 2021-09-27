@@ -13,5 +13,6 @@
         <mapping class="com.muhammedtopgul.hibernatedocs.collections.entity.Country"/>
         <mapping class="com.muhammedtopgul.hibernatedocs.collections.entity.City"/>
         <mapping class="com.muhammedtopgul.hibernatedocs.collections.entity.District"/>
+        <mapping class="com.muhammedtopgul.hibernatedocs.collections.entity.Article"/>
     </session-factory>
 </hibernate-configuration>

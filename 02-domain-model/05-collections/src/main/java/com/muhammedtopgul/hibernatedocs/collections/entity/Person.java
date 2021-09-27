@@ -3,11 +3,13 @@ package com.muhammedtopgul.hibernatedocs.collections.entity;
 import com.muhammedtopgul.hibernatedocs.collections.entity.embeddable.Phone;
 import com.muhammedtopgul.hibernatedocs.commons.BaseId;
 import lombok.Getter;
-import lombok.Setter;
+import org.hibernate.annotations.SortNatural;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 /**
  * created by Muhammed Topgul on 25/09/2021 at 22:32
@@ -26,6 +28,15 @@ public class Person extends BaseId {
     @ElementCollection
     @JoinTable(schema = "collections", name = "embeddable_person_phone")
     private List<Phone> embeddablePhones = new ArrayList<>();
+
+    @OneToMany(mappedBy = "person", cascade = CascadeType.ALL, orphanRemoval = true)
+    @SortNatural
+    private SortedSet<Article> articles = new TreeSet<>();
+
+    public void addArticle(Article article) {
+        this.articles.add(article);
+        article.setPerson(this);
+    }
 
     public void addStringPhone(String phone) {
         this.getStringPhones().add(phone);

@@ -1,10 +1,7 @@
 package com.muhammedtopgul.hibernatedocs.collections;
 
 import com.muhammedtopgul.hibernatedocs.collections.config.HibernateConfig;
-import com.muhammedtopgul.hibernatedocs.collections.entity.City;
-import com.muhammedtopgul.hibernatedocs.collections.entity.Country;
-import com.muhammedtopgul.hibernatedocs.collections.entity.District;
-import com.muhammedtopgul.hibernatedocs.collections.entity.Person;
+import com.muhammedtopgul.hibernatedocs.collections.entity.*;
 import com.muhammedtopgul.hibernatedocs.collections.entity.embeddable.Phone;
 import com.muhammedtopgul.hibernatedocs.utility.HibernateUtil;
 import org.hibernate.Session;
@@ -115,5 +112,31 @@ public class CollectionsTests {
         Session session = getSession();
         city = session.get(City.class, city.getId());
         city.getDistricts().forEach(district -> System.out.println(district.getName()));
+    }
+
+    @Test
+    public void testSortedSet() {
+        Article article1 = new Article();
+        article1.setType("SE");
+        article1.setTitle("How to Program Java");
+
+        Article article2 = new Article();
+        article2.setType("EE");
+        article2.setTitle("Spring In Action");
+
+        Article article3 = new Article();
+        article3.setType("EE");
+        article3.setTitle("Java Server Pages");
+
+        Person person = new Person();
+        person.addArticle(article1);
+        person.addArticle(article2);
+        person.addArticle(article3);
+
+        persist(person);
+
+        Session session = getSession();
+        person = session.get(Person.class, person.getId());
+        person.getArticles().forEach(article -> System.out.println(article.getTitle()));
     }
 }
