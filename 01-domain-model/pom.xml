@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>02-domain-model</artifactId>
+    <artifactId>01-domain-model</artifactId>
     <packaging>pom</packaging>
 
     <modules>
