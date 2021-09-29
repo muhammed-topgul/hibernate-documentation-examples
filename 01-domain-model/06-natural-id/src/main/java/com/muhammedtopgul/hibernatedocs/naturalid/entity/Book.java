@@ -5,9 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.NaturalId;
 
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * created by Muhammed Topgul on 29/09/2021 at 08:26
@@ -26,4 +24,8 @@ public class Book extends BaseId {
     @NaturalId
     @Embedded
     private Isbn isbn;
+
+    @NaturalId
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Publisher publisher;
 }
