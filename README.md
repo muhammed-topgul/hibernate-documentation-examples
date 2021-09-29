@@ -26,4 +26,5 @@ create schema entity_types;
 create schema identifiers;
 create schema associations;
 create schema collections;
+create schema natural_ids;
 ```

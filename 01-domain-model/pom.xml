@@ -18,6 +18,7 @@
         <module>03-identifiers</module>
         <module>04-associations</module>
         <module>05-collections</module>
+        <module>06-natural-id</module>
     </modules>
 
     <properties>
