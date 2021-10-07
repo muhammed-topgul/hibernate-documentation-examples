@@ -19,6 +19,7 @@
         <module>04-associations</module>
         <module>05-collections</module>
         <module>06-natural-id</module>
+        <module>07-inheritance</module>
     </modules>
 
     <properties>
