@@ -1,6 +1,8 @@
 package com.muhammedtopgul.hibernatedocs.naturalid.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Embeddable;
@@ -12,6 +14,8 @@ import java.util.Objects;
  */
 
 @Embeddable
+@NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 public class Isbn implements Serializable {
