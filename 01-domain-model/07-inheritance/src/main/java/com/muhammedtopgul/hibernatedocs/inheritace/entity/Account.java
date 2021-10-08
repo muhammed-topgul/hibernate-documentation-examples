@@ -15,10 +15,14 @@ import java.math.BigDecimal;
 
 // 1. strategy: @MappedSuperclass
 // @MappedSuperclass
-// 2. strategy: InheritanceType.SINGLE_TABLE
+
 @Entity(name = "Account")
 @Table(schema = "inheritances", name = "account")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+// 2. strategy: InheritanceType.SINGLE_TABLE
+// @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+
+// 3. strategy: InheritanceType.JOINED
+@Inheritance(strategy = InheritanceType.JOINED)
 @Getter
 @Setter
 @ToString

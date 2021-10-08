@@ -3,6 +3,7 @@ package com.muhammedtopgul.hibernatedocs.inheritace.entity;
 import lombok.Data;
 
 import javax.persistence.Entity;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import java.math.BigDecimal;
 
@@ -12,6 +13,7 @@ import java.math.BigDecimal;
 
 @Entity(name = "DebitAccount")
 @Table(schema = "inheritances", name = "debit_account")
+@PrimaryKeyJoinColumn(name = "account_id")
 @Data
 public class DebitAccount extends Account {
 

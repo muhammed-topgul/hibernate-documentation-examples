@@ -37,7 +37,7 @@ public class InheritanceTests {
     }
 
     @Test
-    public void testSingleTableInheritance() {
+    public void testTableInheritanceQuery() {
         DebitAccount debitAccount = new DebitAccount();
         debitAccount.setBalance(new BigDecimal(100));
         debitAccount.setBalance(new BigDecimal(200));
