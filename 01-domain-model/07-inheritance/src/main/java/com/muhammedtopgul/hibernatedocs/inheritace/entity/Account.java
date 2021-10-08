@@ -4,6 +4,7 @@ import com.muhammedtopgul.hibernatedocs.commons.BaseId;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -20,6 +21,7 @@ import java.math.BigDecimal;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Getter
 @Setter
+@ToString
 public abstract class Account extends BaseId {
 
     private String owner;
