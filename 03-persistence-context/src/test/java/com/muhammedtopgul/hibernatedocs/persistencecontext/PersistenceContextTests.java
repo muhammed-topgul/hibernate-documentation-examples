@@ -29,11 +29,7 @@ public class PersistenceContextTests {
 
         Session session = getSession();
         Transaction transaction = getTransaction(session);
-        if (session.contains(person)) {
-            System.out.println("Person is in MANAGED state");
-        } else {
-
-        }
+        System.out.printf("Person is in %s state. %n", session.contains(person) ? "MANAGED" : "DETACH");
         session.remove(person);
         transaction.commit();
         session.close();
