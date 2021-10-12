@@ -11,5 +11,7 @@
 
         <mapping class="com.muhammedtopgul.hibernatedocs.inheritace.entity.CreditAccount"/>
         <mapping class="com.muhammedtopgul.hibernatedocs.inheritace.entity.DebitAccount"/>
+        <mapping class="com.muhammedtopgul.hibernatedocs.inheritace.entity.Book"/>
+        <mapping class="com.muhammedtopgul.hibernatedocs.inheritace.entity.Blog"/>
     </session-factory>
 </hibernate-configuration>

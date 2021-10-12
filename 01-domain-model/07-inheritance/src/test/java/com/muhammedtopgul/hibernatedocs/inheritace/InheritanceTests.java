@@ -1,9 +1,7 @@
 package com.muhammedtopgul.hibernatedocs.inheritace;
 
 import com.muhammedtopgul.hibernatedocs.inheritace.config.HibernateConfig;
-import com.muhammedtopgul.hibernatedocs.inheritace.entity.Account;
-import com.muhammedtopgul.hibernatedocs.inheritace.entity.CreditAccount;
-import com.muhammedtopgul.hibernatedocs.inheritace.entity.DebitAccount;
+import com.muhammedtopgul.hibernatedocs.inheritace.entity.*;
 import com.muhammedtopgul.hibernatedocs.utility.HibernateUtil;
 import org.hibernate.Session;
 import org.junit.Before;
@@ -14,6 +12,8 @@ import java.util.List;
 
 import static com.muhammedtopgul.hibernatedocs.utility.HibernateUtil.*;
 import static com.muhammedtopgul.hibernatedocs.utility.HibernateUtil.sessionClose;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * created by Muhammed Topgul on 07/10/2021 at 13:00
@@ -55,9 +55,33 @@ public class InheritanceTests {
         Session session = getSession();
 
         List<Account> accounts = session
-                .createQuery( "select a from Account a" )
+                .createQuery("select a from Account a")
                 .getResultList();
 
         accounts.forEach(account -> System.out.println(account.getBalance()));
+    }
+
+    @Test
+    public void testExplicitPolymorphism() {
+        Book book = new Book();
+        book.setId(1L);
+        book.setAuthor("Vlad Mihalcea");
+        book.setTitle("High-Performance Java Persistence");
+        persist(book);
+
+        Blog blog = new Blog();
+        blog.setId(1L);
+        blog.setSite("vladmihalcea.com");
+        persist(blog);
+
+        Session session = getSession();
+
+        List<DomainModelEntity> accounts = session
+                .createQuery(
+                        "select e from com.muhammedtopgul.hibernatedocs.inheritace.entity.DomainModelEntity e" )
+                .getResultList();
+
+        assertEquals(1, accounts.size());
+        assertTrue( accounts.get( 0 ) instanceof Book );
     }
 }
