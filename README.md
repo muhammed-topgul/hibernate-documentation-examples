@@ -28,4 +28,5 @@ create schema associations;
 create schema collections;
 create schema natural_ids;
 create schema inheritances;
+create schema immutability;
 ```

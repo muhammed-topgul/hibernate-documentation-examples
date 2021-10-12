@@ -20,6 +20,7 @@
         <module>05-collections</module>
         <module>06-natural-id</module>
         <module>07-inheritance</module>
+        <module>08-immutability</module>
     </modules>
 
     <properties>
