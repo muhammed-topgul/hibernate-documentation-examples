@@ -22,7 +22,9 @@ import java.math.BigDecimal;
 // @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 
 // 3. strategy: InheritanceType.JOINED
-@Inheritance(strategy = InheritanceType.JOINED)
+// @Inheritance(strategy = InheritanceType.JOINED)
+// 4. strategy: InheritanceType.TABLE_PER_CLASS
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @Getter
 @Setter
 @ToString
