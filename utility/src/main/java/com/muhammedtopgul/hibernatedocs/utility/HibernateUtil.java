@@ -38,6 +38,10 @@ public class HibernateUtil {
         return getSession().get(clazz, id);
     }
 
+    public static <T> T reference(Class<T> clazz, String id) {
+        return getSession().getReference(clazz, id);
+    }
+
     public static <T> void remove(Class<T> clazz, String id) {
         Session session = getSession();
         Transaction transaction = getTransaction(session);
