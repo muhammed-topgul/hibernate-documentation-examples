@@ -23,6 +23,7 @@
 
     <modules>
         <module>01-domain-model</module>
+        <module>02-schema-generation</module>
         <module>commons</module>
         <module>utility</module>
     </modules>
