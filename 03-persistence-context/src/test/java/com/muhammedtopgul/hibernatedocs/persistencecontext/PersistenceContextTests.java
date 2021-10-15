@@ -135,4 +135,23 @@ public class PersistenceContextTests {
         session.persist(person);
         transaction.commit();
     }
+
+    @Test
+    public void testMergeDetachedEntity() {
+        Person person = new Person();
+        person.setName("Muhammed");
+        persist(person);
+
+        Session session = getSession();
+        Transaction transaction = getTransaction(session);
+        person = session.byId(Person.class).load(person.getId());
+
+        session.clear(); // clear the Session so the person entity becomes detached
+        person.setName("Mr. John Doe");
+
+        person = (Person) session.merge(person);
+
+        session.persist(person);
+        transaction.commit();
+    }
 }
