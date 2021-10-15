@@ -4,8 +4,8 @@ import com.muhammedtopgul.hibernatedocs.persistencecontext.config.HibernateConfi
 import com.muhammedtopgul.hibernatedocs.persistencecontext.entity.Author;
 import com.muhammedtopgul.hibernatedocs.persistencecontext.entity.Book;
 import com.muhammedtopgul.hibernatedocs.persistencecontext.entity.Person;
+import com.muhammedtopgul.hibernatedocs.persistencecontext.entity.Phone;
 import com.muhammedtopgul.hibernatedocs.utility.HibernateUtil;
-import org.hibernate.LockMode;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.junit.Before;
@@ -153,5 +153,162 @@ public class PersistenceContextTests {
 
         session.persist(person);
         transaction.commit();
+    }
+
+    @Test
+    public void testCascadeTypePersist() {
+        Person person = new Person();
+        person.setName("John Doe");
+
+        Phone phone = new Phone();
+        phone.setNumber("123-456-7890");
+        person.addPhone(phone);
+
+        persist(person);
+
+        // assert
+        assertEquals(person.getName(), get(Person.class, person.getId()).getName());
+        assertEquals(phone.getNumber(), get(Phone.class, phone.getId()).getNumber());
+    }
+
+    @Test
+    public void testCascadeTypeMerge() {
+        // save
+        Person person = new Person();
+        person.setName("John Doe");
+
+        Phone phone = new Phone();
+        phone.setNumber("123-456-7890");
+        person.addPhone(phone);
+
+        persist(person);
+
+        // get
+        Session session = getSession();
+        Transaction transaction = getTransaction(session);
+
+        phone = session.get(Phone.class, phone.getId());
+        person = phone.getPerson();
+
+        person.setName("John Doe Jr.");
+        phone.setNumber("987-654-3210");
+
+        session.clear();
+
+        // merge
+        session.merge(phone);
+        session.merge(person);
+        transaction.commit();
+
+        // assert
+        assertEquals("John Doe Jr.", get(Person.class, person.getId()).getName());
+        assertEquals("987-654-3210", get(Phone.class, phone.getId()).getNumber());
+    }
+
+    @Test
+    public void testCascadeTypeRemove() {
+        // save
+        Person person = new Person();
+        person.setName("John Doe");
+
+        Phone phone = new Phone();
+        phone.setNumber("123-456-7890");
+        person.addPhone(phone);
+
+        persist(person);
+
+        // get
+        Session session = getSession();
+        Transaction transaction = getTransaction(session);
+        person = session.get(Person.class, person.getId());
+
+        // remove
+        session.remove(person);
+        transaction.commit();
+
+        // assert
+        assertNull(get(Person.class, person.getId()));
+        assertNull(get(Phone.class, phone.getId()));
+    }
+
+    @Test
+    public void testCascadeTypeDetach() {
+        // save
+        Person person = new Person();
+        person.setName("John Doe");
+
+        Phone phone = new Phone();
+        phone.setNumber("123-456-7890");
+        person.addPhone(phone);
+
+        persist(person);
+
+        // get
+        Session session = getSession();
+        Transaction transaction = getTransaction(session);
+        person = session.get(Person.class, person.getId());
+        phone = person.getPhones().get(0);
+
+        // assert
+        assertTrue(session.contains(person));
+        assertTrue(session.contains(phone));
+
+        // detach
+        session.detach(person);
+
+        // assert
+        assertFalse(session.contains(person));
+        assertFalse(session.contains(phone));
+    }
+
+    @Test
+    public void testCascadeTypeRefresh() {
+        Person person = new Person();
+        person.setName("John Doe");
+
+        Phone phone = new Phone();
+        phone.setNumber("123-456-7890");
+        person.addPhone(phone);
+
+        persist(person);
+
+        Session session = getSession();
+
+        person = session.get(Person.class, person.getId());
+        phone = person.getPhones().get(0);
+
+        person.setName("John Doe Jr.");
+        phone.setNumber("987-654-3210");
+
+        session.refresh(person);
+
+        assertEquals("John Doe", person.getName());
+        assertEquals("123-456-7890", phone.getNumber());
+    }
+
+    @Test
+    public void testOnDelete() {
+        // save
+        Person person = new Person();
+        person.setName("John Doe");
+
+        Phone phone = new Phone();
+        phone.setNumber("123-456-7890");
+        person.addPhone(phone);
+
+        persist(person);
+
+        // get
+        Session session = getSession();
+        Transaction transaction = getTransaction(session);
+        person = session.get(Person.class, person.getId());
+
+        // remove
+        session.remove(person);
+        transaction.commit();
+
+        // assert
+        assertNull(get(Person.class, person.getId()));
+        assertNull(get(Phone.class, phone.getId()));
     }
 }

@@ -4,8 +4,12 @@ import com.muhammedtopgul.hibernatedocs.commons.BaseId;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * created by Muhammed Topgul on 12/10/2021 at 14:16
@@ -18,4 +22,12 @@ import javax.persistence.Table;
 public class Person extends BaseId {
 
     private String name;
+
+    @OneToMany(mappedBy = "person", cascade = CascadeType.ALL)
+    private List<Phone> phones = new ArrayList<>();
+
+    public void addPhone(Phone phone) {
+        this.phones.add(phone);
+        phone.setPerson(this);
+    }
 }

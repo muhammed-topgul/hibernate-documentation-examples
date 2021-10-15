@@ -12,5 +12,6 @@
         <mapping class="com.muhammedtopgul.hibernatedocs.persistencecontext.entity.Person"/>
         <mapping class="com.muhammedtopgul.hibernatedocs.persistencecontext.entity.Book"/>
         <mapping class="com.muhammedtopgul.hibernatedocs.persistencecontext.entity.Author"/>
+        <mapping class="com.muhammedtopgul.hibernatedocs.persistencecontext.entity.Phone"/>
     </session-factory>
 </hibernate-configuration>
