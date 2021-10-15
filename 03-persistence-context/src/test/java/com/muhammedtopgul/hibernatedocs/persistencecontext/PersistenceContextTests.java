@@ -5,6 +5,7 @@ import com.muhammedtopgul.hibernatedocs.persistencecontext.entity.Author;
 import com.muhammedtopgul.hibernatedocs.persistencecontext.entity.Book;
 import com.muhammedtopgul.hibernatedocs.persistencecontext.entity.Person;
 import com.muhammedtopgul.hibernatedocs.utility.HibernateUtil;
+import org.hibernate.LockMode;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.junit.Before;
@@ -114,5 +115,24 @@ public class PersistenceContextTests {
         } else {
             System.out.println("Author is null");
         }
+    }
+
+    @Test
+    public void testReattachingDetachedEntityUsingSaveOrUpdate() {
+        Person person = new Person();
+        person.setName("Muhammed");
+        persist(person);
+
+        Session session = getSession();
+        Transaction transaction = getTransaction(session);
+        person = session.byId(Person.class).load(person.getId());
+
+        session.clear(); // clear the Session so the person entity becomes detached
+        person.setName("Mr. John Doe");
+
+        session.saveOrUpdate(person); // make detach to managed
+
+        session.persist(person);
+        transaction.commit();
     }
 }
