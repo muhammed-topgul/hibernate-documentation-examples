@@ -5,6 +5,8 @@ import lombok.Setter;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.util.Optional;
+
 /**
  * created by Muhammed Topgul on 13/09/2021 at 09:10
  */
@@ -36,6 +38,14 @@ public class HibernateUtil {
 
     public static <T> T get(Class<T> clazz, String id) {
         return getSession().get(clazz, id);
+    }
+
+    public static <T> T byId(Class<T> clazz, String id) {
+        return getSession().byId(clazz).load(id);
+    }
+
+    public static <T> Optional<T> optionalById(Class<T> clazz, String id) {
+        return getSession().byId(clazz).loadOptional(id);
     }
 
     public static <T> T reference(Class<T> clazz, String id) {
