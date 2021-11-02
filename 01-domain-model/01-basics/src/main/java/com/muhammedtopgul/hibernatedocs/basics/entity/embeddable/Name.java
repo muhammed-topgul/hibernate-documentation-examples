@@ -6,7 +6,7 @@ import lombok.Setter;
 import javax.persistence.Embeddable;
 
 /**
- * created by Muhammed Topgul on 13/09/2021 at 09:27
+ * @author muhammed-topgul created at 13/09/2021 09:27
  */
 
 @Embeddable

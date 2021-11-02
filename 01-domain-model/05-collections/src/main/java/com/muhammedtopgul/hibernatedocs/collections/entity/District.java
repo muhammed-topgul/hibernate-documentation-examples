@@ -9,7 +9,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
- * created by Muhammed Topgul on 27/09/2021 at 21:52
+ * @author muhammed-topgul created at 27/09/2021 21:52
  */
 
 @Entity(name = "District")

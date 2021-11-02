@@ -7,7 +7,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 /**
- * created by Muhammed Topgul on 13/09/2021 at 09:09
+ * @author muhammed-topgul created at 13/09/2021 09:09
  */
 
 public class HibernateConfig implements Config {

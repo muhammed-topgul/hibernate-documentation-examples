@@ -12,7 +12,7 @@ import javax.persistence.Table;
 import java.util.BitSet;
 
 /**
- * created by Muhammed Topgul on 15/09/2021 at 11:43
+ * @author muhammed-topgul created at 15/09/2021 11:43
  */
 
 @Entity(name = "Product")

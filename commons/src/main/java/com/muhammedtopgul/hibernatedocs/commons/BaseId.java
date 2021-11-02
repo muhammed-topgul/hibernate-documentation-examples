@@ -11,7 +11,7 @@ import javax.persistence.MappedSuperclass;
 import java.io.Serializable;
 
 /**
- * created by Muhammed Topgul on 16/09/2021 at 11:08
+ * @author muhammed-topgul created at 16/09/2021 11:08
  */
 
 @MappedSuperclass

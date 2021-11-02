@@ -9,7 +9,7 @@ import org.hibernate.annotations.NaturalId;
 import javax.persistence.*;
 
 /**
- * created by Muhammed Topgul on 29/09/2021 at 08:26
+ * @author muhammed-topgul created at 29/09/2021 08:26
  */
 
 @Entity(name = "Book")

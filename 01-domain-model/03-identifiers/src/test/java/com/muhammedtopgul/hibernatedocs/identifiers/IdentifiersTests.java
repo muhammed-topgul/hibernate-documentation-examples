@@ -11,7 +11,7 @@ import org.junit.Test;
 import static com.muhammedtopgul.hibernatedocs.utility.HibernateUtil.persist;
 
 /**
- * created by Muhammed Topgul on 20/09/2021 at 16:52
+ * @author muhammed-topgul created at 20/09/2021 16:52
  */
 
 public class IdentifiersTests {

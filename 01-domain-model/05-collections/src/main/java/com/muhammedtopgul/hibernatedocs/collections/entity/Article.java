@@ -10,7 +10,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
- * created by Muhammed Topgul on 27/09/2021 at 22:21
+ * @author muhammed-topgul created at 27/09/2021 22:21
  */
 
 @Entity(name = "Article")

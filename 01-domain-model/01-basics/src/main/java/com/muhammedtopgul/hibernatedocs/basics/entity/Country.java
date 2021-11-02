@@ -12,7 +12,7 @@ import javax.persistence.Table;
 import java.util.Objects;
 
 /**
- * created by Muhammed Topgul on 16/09/2021 at 15:52
+ * @author muhammed-topgul created at 16/09/2021 15:52
  */
 
 @Entity(name = "Country")

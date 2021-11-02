@@ -11,7 +11,7 @@ import javax.persistence.Table;
 import java.util.Date;
 
 /**
- * created by Muhammed Topgul on 16/09/2021 at 11:23
+ * @author muhammed-topgul created at 16/09/2021 11:23
  */
 
 @Entity(name = "Event")

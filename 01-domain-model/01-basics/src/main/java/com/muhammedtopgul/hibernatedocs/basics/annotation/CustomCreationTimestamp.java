@@ -7,7 +7,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 /**
- * created by Muhammed Topgul on 16/09/2021 at 11:25
+ * @author muhammed-topgul created at 16/09/2021 11:25
  */
 
 @ValueGenerationType(generatedBy = CustomCreationValueGeneration.class)

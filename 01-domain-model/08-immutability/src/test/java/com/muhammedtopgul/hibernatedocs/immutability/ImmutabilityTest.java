@@ -15,7 +15,7 @@ import static com.muhammedtopgul.hibernatedocs.utility.HibernateUtil.*;
 import static org.junit.Assert.assertEquals;
 
 /**
- * created by Muhammed Topgul on 12/10/2021 at 11:42
+ * @author muhammed-topgul created at 12/10/2021 11:42
  */
 
 public class ImmutabilityTest {

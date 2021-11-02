@@ -12,7 +12,7 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 
 /**
- * created by Muhammed Topgul on 25/09/2021 at 22:32
+ * @author muhammed-topgul created at 25/09/2021 22:32
  */
 
 @Entity(name = "Person")

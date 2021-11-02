@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import static com.muhammedtopgul.hibernatedocs.utility.HibernateUtil.*;
 
 /**
- * created by Muhammed Topgul on 25/09/2021 at 22:34
+ * @author muhammed-topgul created at 25/09/2021 22:34
  */
 
 public class CollectionsTests {

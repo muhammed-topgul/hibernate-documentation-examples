@@ -9,7 +9,7 @@ import org.hibernate.annotations.OnDeleteAction;
 import javax.persistence.*;
 
 /**
- * created by Muhammed Topgul on 15/10/2021 at 15:51
+ * @author muhammed-topgul created at 15/10/2021 15:51
  */
 
 @Entity(name = "Phone")

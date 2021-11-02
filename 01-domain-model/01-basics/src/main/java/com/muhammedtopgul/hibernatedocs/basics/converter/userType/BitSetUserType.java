@@ -16,7 +16,7 @@ import java.util.BitSet;
 import java.util.Objects;
 
 /**
- * created by Muhammed Topgul on 15/09/2021 at 17:07
+ * @author muhammed-topgul created at 15/09/2021 17:07
  */
 
 public class BitSetUserType implements UserType {

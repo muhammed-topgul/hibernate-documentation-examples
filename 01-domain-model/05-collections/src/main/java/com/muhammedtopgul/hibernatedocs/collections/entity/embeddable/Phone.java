@@ -9,7 +9,7 @@ import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 /**
- * created by Muhammed Topgul on 25/09/2021 at 23:26
+ * @author muhammed-topgul created at 25/09/2021 23:26
  */
 
 @Embeddable

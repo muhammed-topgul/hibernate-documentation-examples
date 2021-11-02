@@ -1,7 +1,7 @@
 package com.muhammedtopgul.hibernatedocs.entitytypes;
 
 /**
- * created by Muhammed Topgul on 20/09/2021 at 13:01
+ * @author muhammed-topgul created at 20/09/2021 13:01
  */
 
 import com.muhammedtopgul.hibernatedocs.entitytypes.config.HibernateConfig;

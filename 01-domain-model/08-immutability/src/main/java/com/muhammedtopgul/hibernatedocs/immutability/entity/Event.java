@@ -10,7 +10,7 @@ import javax.persistence.Table;
 import java.util.Date;
 
 /**
- * created by Muhammed Topgul on 12/10/2021 at 11:38
+ * @author muhammed-topgul created at 12/10/2021 11:38
  */
 
 @Entity(name = "Event")

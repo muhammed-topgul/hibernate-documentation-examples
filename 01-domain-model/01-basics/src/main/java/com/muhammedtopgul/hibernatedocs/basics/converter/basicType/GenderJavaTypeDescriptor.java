@@ -6,7 +6,7 @@ import org.hibernate.type.descriptor.java.AbstractTypeDescriptor;
 import org.hibernate.type.descriptor.java.CharacterTypeDescriptor;
 
 /**
- * created by Muhammed Topgul on 15/09/2021 at 17:36
+ * @author muhammed-topgul created at 15/09/2021 17:36
  */
 
 public class GenderJavaTypeDescriptor extends AbstractTypeDescriptor<Gender> {

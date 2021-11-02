@@ -16,7 +16,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 /**
- * created by Muhammed Topgul on 07/10/2021 at 13:00
+ * @author muhammed-topgul created at 07/10/2021 13:00
  */
 
 public class InheritanceTests {

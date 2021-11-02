@@ -11,7 +11,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /**
- * created by Muhammed Topgul on 20/09/2021 at 17:00
+ * @author muhammed-topgul created at 20/09/2021 17:00
  */
 
 @Embeddable

@@ -6,7 +6,7 @@ import org.hibernate.type.descriptor.java.AbstractTypeDescriptor;
 import java.util.BitSet;
 
 /**
- * created by Muhammed Topgul on 15/09/2021 at 11:39
+ * @author muhammed-topgul created at 15/09/2021 11:39
  */
 
 public class BitSetTypeDescriptor extends AbstractTypeDescriptor<BitSet> {

@@ -8,7 +8,7 @@ import org.hibernate.annotations.NaturalId;
 import javax.persistence.*;
 
 /**
- * created by Muhammed Topgul on 21/09/2021 at 17:01
+ * @author muhammed-topgul created at 21/09/2021 17:01
  */
 
 @Entity(name = "Country")

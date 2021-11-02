@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * created by Muhammed Topgul on 23/09/2021 at 23:05
+ * @author muhammed-topgul created at 23/09/2021 23:05
  */
 
 @Entity(name = "Account")

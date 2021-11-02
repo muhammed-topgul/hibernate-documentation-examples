@@ -14,7 +14,7 @@ import static com.muhammedtopgul.hibernatedocs.utility.HibernateUtil.*;
 import static org.junit.Assert.assertEquals;
 
 /**
- * created by Muhammed Topgul on 12/10/2021 at 13:09
+ * @author muhammed-topgul created at 12/10/2021 13:09
  */
 
 public class SchemaGenerationTests {

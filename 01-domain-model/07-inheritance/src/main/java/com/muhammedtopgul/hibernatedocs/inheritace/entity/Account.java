@@ -10,7 +10,7 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 
 /**
- * created by Muhammed Topgul on 07/10/2021 at 12:55
+ * @author muhammed-topgul created at 07/10/2021 12:55
  */
 
 // 1. strategy: @MappedSuperclass

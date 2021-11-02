@@ -1,7 +1,7 @@
 package com.muhammedtopgul.hibernatedocs.inheritace.entity;
 
 /**
- * created by Muhammed Topgul on 12/10/2021 at 11:14
+ * @author muhammed-topgul created at 12/10/2021 11:14
  */
 
 public interface DomainModelEntity<ID> {

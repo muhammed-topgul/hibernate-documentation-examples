@@ -13,7 +13,7 @@ import static com.muhammedtopgul.hibernatedocs.utility.HibernateUtil.getSession;
 import static com.muhammedtopgul.hibernatedocs.utility.HibernateUtil.persist;
 
 /**
- * created by Muhammed Topgul on 29/09/2021 at 08:29
+ * @author muhammed-topgul created at 29/09/2021 08:29
  */
 
 public class NaturalIdsTests {

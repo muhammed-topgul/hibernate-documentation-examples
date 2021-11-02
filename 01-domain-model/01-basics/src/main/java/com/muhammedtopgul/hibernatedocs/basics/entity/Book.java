@@ -10,7 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 /**
- * created by Muhammed Topgul on 17/09/2021 at 14:45
+ * @author muhammed-topgul created at 17/09/2021 14:45
  */
 
 @Entity(name = "Book")

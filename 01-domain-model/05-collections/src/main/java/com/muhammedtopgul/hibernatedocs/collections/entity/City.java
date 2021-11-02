@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * created by Muhammed Topgul on 27/09/2021 at 21:30
+ * @author muhammed-topgul created at 27/09/2021 21:30
  */
 
 @Entity(name = "City")

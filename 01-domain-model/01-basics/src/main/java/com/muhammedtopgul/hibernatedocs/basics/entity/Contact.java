@@ -10,7 +10,7 @@ import javax.persistence.*;
 import java.net.URL;
 
 /**
- * created by Muhammed Topgul on 13/09/2021 at 09:27
+ * @author muhammed-topgul created at 13/09/2021 09:27
  */
 
 @Entity(name = "Contact")

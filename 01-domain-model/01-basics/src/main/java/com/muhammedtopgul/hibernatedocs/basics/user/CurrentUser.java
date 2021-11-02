@@ -1,7 +1,7 @@
 package com.muhammedtopgul.hibernatedocs.basics.user;
 
 /**
- * created by Muhammed Topgul on 16/09/2021 at 11:15
+ * @author muhammed-topgul created at 16/09/2021 11:15
  */
 
 public class CurrentUser {

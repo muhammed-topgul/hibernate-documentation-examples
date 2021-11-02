@@ -6,7 +6,7 @@ import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
 
 /**
- * created by Muhammed Topgul on 15/09/2021 at 17:22
+ * @author muhammed-topgul created at 15/09/2021 17:22
  */
 
 @Converter

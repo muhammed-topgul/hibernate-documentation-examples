@@ -8,7 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 /**
- * created by Muhammed Topgul on 29/09/2021 at 08:34
+ * @author muhammed-topgul created at 29/09/2021 08:34
  */
 
 @Entity(name = "Publisher")

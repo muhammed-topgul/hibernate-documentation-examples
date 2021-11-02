@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * created by Muhammed Topgul on 12/10/2021 at 11:50
+ * @author muhammed-topgul created at 12/10/2021 11:50
  */
 
 @Entity(name = "Batch")

@@ -8,7 +8,7 @@ import org.hibernate.type.descriptor.sql.VarcharTypeDescriptor;
 import java.util.BitSet;
 
 /**
- * created by Muhammed Topgul on 15/09/2021 at 11:35
+ * @author muhammed-topgul created at 15/09/2021 11:35
  * converts BitSet to VARCHAR for database and return BitSet from database
  */
 

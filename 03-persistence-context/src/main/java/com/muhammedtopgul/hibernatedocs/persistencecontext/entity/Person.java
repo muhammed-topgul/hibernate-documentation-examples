@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * created by Muhammed Topgul on 12/10/2021 at 14:16
+ * @author muhammed-topgul created at 12/10/2021 14:16
  */
 
 @Entity(name = "Person")

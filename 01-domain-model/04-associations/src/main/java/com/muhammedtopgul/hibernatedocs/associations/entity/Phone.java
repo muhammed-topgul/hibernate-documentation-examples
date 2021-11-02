@@ -7,7 +7,7 @@ import lombok.Setter;
 import javax.persistence.*;
 
 /**
- * created by Muhammed Topgul on 21/09/2021 at 16:10
+ * @author muhammed-topgul created at 21/09/2021 16:10
  */
 
 @Entity(name = "Phone")

@@ -7,7 +7,7 @@ import javax.persistence.Table;
 import java.math.BigDecimal;
 
 /**
- * created by Muhammed Topgul on 07/10/2021 at 12:57
+ * @author muhammed-topgul created at 07/10/2021 12:57
  */
 
 @Entity(name = "CreditAccount")

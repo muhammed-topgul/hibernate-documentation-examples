@@ -5,7 +5,7 @@ import org.hibernate.type.AbstractSingleColumnStandardBasicType;
 import org.hibernate.type.descriptor.sql.CharTypeDescriptor;
 
 /**
- * created by Muhammed Topgul on 15/09/2021 at 17:35
+ * @author muhammed-topgul created at 15/09/2021 17:35
  */
 
 public class GenderType extends AbstractSingleColumnStandardBasicType<Gender> {

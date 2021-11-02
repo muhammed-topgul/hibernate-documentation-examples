@@ -6,7 +6,7 @@ import org.hibernate.tuple.GenerationTiming;
 import org.hibernate.tuple.ValueGenerator;
 
 /**
- * created by Muhammed Topgul on 16/09/2021 at 11:26
+ * @author muhammed-topgul created at 16/09/2021 11:26
  */
 
 public class CustomCreationValueGeneration implements AnnotationValueGeneration<CustomCreationTimestamp> {

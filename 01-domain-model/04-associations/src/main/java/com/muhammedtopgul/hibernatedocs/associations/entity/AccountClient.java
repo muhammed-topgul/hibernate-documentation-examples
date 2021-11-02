@@ -11,7 +11,7 @@ import javax.persistence.Table;
 import java.util.Objects;
 
 /**
- * created by Muhammed Topgul on 23/09/2021 at 23:07
+ * @author muhammed-topgul created at 23/09/2021 23:07
  */
 
 @Entity(name = "AccountClient")

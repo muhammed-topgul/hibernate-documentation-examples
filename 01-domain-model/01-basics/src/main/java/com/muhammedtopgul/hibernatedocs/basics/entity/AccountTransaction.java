@@ -9,7 +9,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
- * created by Muhammed Topgul on 20/09/2021 at 10:58
+ * @author muhammed-topgul created at 20/09/2021 10:58
  */
 
 @Entity(name = "AccountTransaction")

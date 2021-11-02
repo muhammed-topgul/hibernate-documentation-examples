@@ -12,7 +12,7 @@ import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 
 /**
- * created by Muhammed Topgul on 17/09/2021 at 14:44
+ * @author muhammed-topgul created at 17/09/2021 14:44
  */
 
 @Embeddable

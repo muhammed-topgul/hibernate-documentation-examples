@@ -14,7 +14,7 @@ import org.hibernate.annotations.ParamDef;
 import javax.persistence.*;
 
 /**
- * created by Muhammed Topgul on 16/09/2021 at 12:39
+ * @author muhammed-topgul created at 16/09/2021 12:39
  */
 
 @FilterDef(

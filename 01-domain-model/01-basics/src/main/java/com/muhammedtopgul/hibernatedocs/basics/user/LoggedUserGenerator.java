@@ -4,7 +4,7 @@ import org.hibernate.Session;
 import org.hibernate.tuple.ValueGenerator;
 
 /**
- * created by Muhammed Topgul on 16/09/2021 at 11:15
+ * @author muhammed-topgul created at 16/09/2021 11:15
  */
 
 public class LoggedUserGenerator implements ValueGenerator<String> {

@@ -12,7 +12,7 @@ import static com.muhammedtopgul.hibernatedocs.utility.HibernateUtil.*;
 import static org.junit.Assert.*;
 
 /**
- * created by Muhammed Topgul on 21/09/2021 at 13:39
+ * @author muhammed-topgul created at 21/09/2021 13:39
  */
 
 public class AssociationsTests {

@@ -10,7 +10,7 @@ import org.hibernate.annotations.Synchronize;
 import javax.persistence.Entity;
 
 /**
- * created by Muhammed Topgul on 20/09/2021 at 10:59
+ * @author muhammed-topgul created at 20/09/2021 10:59
  */
 
 @Entity(name = "AccountSummary")

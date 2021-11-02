@@ -28,7 +28,7 @@ import static com.muhammedtopgul.hibernatedocs.utility.HibernateUtil.*;
 import static org.junit.Assert.*;
 
 /**
- * created by Muhammed Topgul on 13/09/2021 at 09:12
+ * @author muhammed-topgul created at 13/09/2021 09:12
  */
 
 public class BasicTests {
